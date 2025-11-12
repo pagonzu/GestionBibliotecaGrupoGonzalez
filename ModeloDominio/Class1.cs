@@ -9,5 +9,6 @@ namespace ModeloDominio
     public class Class1
     {
         private int contador;
+        //hola
     }
 }
