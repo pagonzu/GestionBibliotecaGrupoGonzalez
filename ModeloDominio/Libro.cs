@@ -13,6 +13,6 @@ namespace ModeloDominio
             : base(isbn, añoEdicion, titulo, autor, editorial)
         {
         }
-        public void hola() { }
+       
     }
 }

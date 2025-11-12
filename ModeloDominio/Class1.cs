@@ -10,7 +10,7 @@ namespace ModeloDominio
     public class Class1
     {
         private int contador;
-        Documento doc = new Libro(" ",3," " ," "," ");
-        
+        Libro doc = new Libro(" ",3," " ," "," ");
+        doc.hola();
     }
 }
