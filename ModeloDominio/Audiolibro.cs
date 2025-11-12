@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Class1
+    internal class Audiolibro
     {
-        private int contador;
-        //hola
     }
 }

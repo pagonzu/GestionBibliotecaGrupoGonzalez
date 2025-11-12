@@ -41,9 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audiolibro.cs" />
     <Compile Include="Class1.cs" />
+<<<<<<< HEAD
     <Compile Include="PersonalAdquisiciones.cs" />
     <Compile Include="PersonalSala.cs" />
+=======
+    <Compile Include="Documento.cs" />
+    <Compile Include="Ejemplar.cs" />
+>>>>>>> 3077231f4abcd00a71f6969b0a7ffd2c2f8c35f6
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trabajador.cs" />
     <Compile Include="Usuario.cs" />
