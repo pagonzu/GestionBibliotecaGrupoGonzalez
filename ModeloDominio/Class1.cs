@@ -9,8 +9,11 @@ namespace ModeloDominio
 {
     public class Class1
     {
-        private int contador;
-        Libro doc = new Libro(" ",3," " ," "," ");
-        doc.hola();
-    }
+        public void hola()
+        {
+            Prestamo prestamo = new Prestamo(1, new DateTime(), true, new PersonalSala(), new Usuario("nombre"));
+            Devolucion devolucion = new Devolucion(prestamo, new Ejemplar(), new DateTime());
+            devolucion.getPrestamo().getTrabajador();
+        }
+    }           
 }

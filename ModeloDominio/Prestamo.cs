@@ -14,7 +14,7 @@ namespace ModeloDominio
         Trabajador trabajador;
         Usuario usuario;
 
-        public Prestamo(int id, DateTime fecha, bool estado, Trabajador trabajador, Usuario usuario)
+        public Prestamo(int id, DateTime fecha, bool estado, PersonalSala trabajador, Usuario usuario)
         {
             this.id = id;
             this.fecha = fecha;
@@ -25,7 +25,7 @@ namespace ModeloDominio
         public int getId() { return id; }
         public DateTime getFecha() { return fecha; }
         public bool getEstado() { return estado; }
-        public Trabajador getTrabajador() { return trabajador; }
+        public PersonalSala getTrabajador() { return trabajador; }
         public Usuario getUsuario() { return usuario; }
         public void setFecha(DateTime fecha) { this.fecha = fecha; }
         public void setEstado(bool estado) {  this.estado = estado; }
