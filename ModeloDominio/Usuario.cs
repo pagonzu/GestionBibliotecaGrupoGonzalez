@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Usuario
+    public class Usuario: IEquatable<Usuario>
     {
         private String dni;
         private String nombre;
@@ -43,6 +43,15 @@ namespace ModeloDominio
             set { this.baja = value; }
         }
 
+        public bool Equals(Usuario other)
+        {
+            return this.DNI.Equals(other.DNI);
+        }
+
+        public override string ToString()
+        {
+            return "Usuario " + DNI + " | Nombre: " + Nombre + " | Baja: " + (Baja ? "Si" : "No");
+        }
 
 
     }

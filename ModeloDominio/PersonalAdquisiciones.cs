@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class PersonalAdquisiciones: Trabajador
+    public class PersonalAdquisiciones: Trabajador, IEquatable<PersonalAdquisiciones>
     {
         private int idAdquisiciones;
 
@@ -22,6 +23,16 @@ namespace ModeloDominio
         public int IdAdquisiciones
         {
             get { return idAdquisiciones; }
+        }
+
+        public bool Equals(PersonalAdquisiciones other)
+        {
+            return this.IdAdquisiciones == other.IdAdquisiciones;
+        }
+
+        public override string ToString()
+        {
+            return "Personal Adquisición " + IdAdquisiciones + " | Nombre: " + Nombre;
         }
     }
 }
