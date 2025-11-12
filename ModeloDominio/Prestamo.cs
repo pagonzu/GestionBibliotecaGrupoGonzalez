@@ -11,7 +11,7 @@ namespace ModeloDominio
         private int id;
         private DateTime fecha;
         bool estado;
-        Trabajador trabajador;
+        PersonalSala trabajador;
         Usuario usuario;
 
         public Prestamo(int id, DateTime fecha, bool estado, PersonalSala trabajador, Usuario usuario)
