@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModeloDominio.EditorDeTexto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace ModeloDominio
     public class Class1
     {
         private int contador;
-        //hola
+        Documento doc = new Libro(" ",3," " ," "," ");
+        
     }
 }
