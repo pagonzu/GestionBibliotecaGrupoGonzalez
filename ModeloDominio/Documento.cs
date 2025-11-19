@@ -15,7 +15,7 @@ namespace ModeloDominio
     namespace EditorDeTexto
     {
        
-        internal abstract class Documento
+        public abstract class Documento
         {
             private string _isbn;
             private int _añoEdicion;
