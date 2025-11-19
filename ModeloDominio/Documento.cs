@@ -17,7 +17,6 @@ namespace ModeloDominio
        
         internal abstract class Documento
         {
-
             private string _isbn;
             private int _añoEdicion;
             private string _titulo;
