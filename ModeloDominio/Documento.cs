@@ -22,15 +22,18 @@ namespace ModeloDominio
             private string _titulo;
             private string _autor;
             private string _editorial;
+            private bool esLibro;
+            private bool esAudioLibro;
 
-            public Documento(string isbn, int año, string titulo, string autor, string editorial)
+            public Documento(string isbn, int año, string titulo, string autor, string editorial, bool esLibro, bool esAudioLibro)
             {
                 _isbn = isbn;
                 _añoEdicion = año;
                 _titulo = titulo;
                 _autor = autor;
                 _editorial = editorial;
-
+                this.esLibro = esLibro;
+                this.esAudioLibro = esAudioLibro;
             }
 
             public string ISBN
