@@ -11,14 +11,18 @@ namespace Persistencia
     {
         private static Tabla<String, EjemplarDato> tablaEjemplares;
 
+
         public static Tabla<String, EjemplarDato> TablaEjemplar {  
             get {
                 if (tablaEjemplares == null)
                 {
                     BD.tablaEjemplares = new Tabla<string, EjemplarDato>();
+                    return tablaEjemplares;
+                } else
+                {
+                    return tablaEjemplares;
                 }
             } 
-            set { } 
         }
 
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    internal class Ejemplar
+    public class Ejemplar
     {
         private string _codigo;
         private bool _estado;

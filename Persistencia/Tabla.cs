@@ -14,6 +14,6 @@ namespace Persistencia
             return item.Id;
         }
 
-        // Operaciones CRUD implementadas en los métodos de KeyedCollection (ADD, GET, SET, 
+        // Operaciones CRUD implementadas en los métodos de KeyedCollection (ADD, GET, SET, DELETE)
     }
 }
