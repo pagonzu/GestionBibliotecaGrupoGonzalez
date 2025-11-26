@@ -3,37 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq; 
 
 namespace Persistencia
 {
     internal class DocumentoDato : Entity<String>
     {
-        
-
         private int _año_edicion;
         private String _titulo;
         private String _autor;
         private String _editorial;
-        private bool _esLibro;   
-        private bool _esAudioLibro; 
+        private bool _esLibro;
+        private bool _esAudioLibro;
+        private String _formato;
+        private int _duracionSegundos;
 
-       
-
-        public DocumentoDato(String ISBN, int año, string titulo, string autor, string editorial, bool esLibro, bool esAudioLibro) : base(ISBN)
+        public DocumentoDato(String ISBN, int año, string titulo, string autor, string editorial,
+                             bool esLibro, bool esAudioLibro, string formato, int duracion)
+            : base(ISBN)
         {
-            // Inicialización de campos
             this._año_edicion = año;
             this._titulo = titulo;
             this._autor = autor;
             this._editorial = editorial;
             this._esLibro = esLibro;
             this._esAudioLibro = esAudioLibro;
+            this._formato = formato;
+            this._duracionSegundos = duracion;
         }
-
-        // ===============================================
-        // Propiedades (Getters y Setters)
-        // ===============================================
 
         public int AñoEdicion
         {
@@ -59,7 +55,6 @@ namespace Persistencia
             set { _editorial = value; }
         }
 
-        
         public bool EsLibro
         {
             get { return _esLibro; }
@@ -70,6 +65,18 @@ namespace Persistencia
         {
             get { return _esAudioLibro; }
             set { _esAudioLibro = value; }
+        }
+
+        public String Formato
+        {
+            get { return _formato; }
+            set { _formato = value; }
+        }
+
+        public int DuracionSegundos
+        {
+            get { return _duracionSegundos; }
+            set { _duracionSegundos = value; }
         }
     }
 }

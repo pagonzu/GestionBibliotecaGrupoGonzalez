@@ -13,8 +13,8 @@ namespace ModeloDominio
 
         private string _formato;
         private int _duracionSegundos;
-        public Audiolibro(string isbn, int añoEdicion, string titulo, string autor, string editorial, string formato, int duracion)
-            : base(isbn, añoEdicion, titulo, autor, editorial)
+        public Audiolibro(string isbn, int añoEdicion, string titulo, string autor, string editorial, bool esLibro, bool esAudioLibro, string formato, int duracion)
+            : base(isbn, añoEdicion, titulo, autor, editorial,esLibro, esAudioLibro)
         {
             Formato = formato;
             DuracionSegundos = duracion;
