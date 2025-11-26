@@ -10,9 +10,9 @@ namespace Persistencia
     internal static class BD
     {
         private static Tabla<String, EjemplarDato> tablaEjemplares;
+        private static Tabla<String, UsuarioDato> tablaUsuarios;
 
-
-        public static Tabla<String, EjemplarDato> TablaEjemplar {  
+        public static Tabla<String, EjemplarDato> TablaEjemplares {  
             get {
                 if (tablaEjemplares == null)
                 {
@@ -21,6 +21,20 @@ namespace Persistencia
                 } else
                 {
                     return tablaEjemplares;
+                }
+            } 
+        }
+
+
+        public static Tabla<String, EjemplarDato> TablaUsuarios {  
+            get {
+                if (tablaUsuarios == null)
+                {
+                    BD.tablaUsuarios = new Tabla<string, EjemplarDato>();
+                    return tablaUsuarios;
+                } else
+                {
+                    return tablaUsuarios;
                 }
             } 
         }

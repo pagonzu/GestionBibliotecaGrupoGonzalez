@@ -19,7 +19,7 @@ namespace Persistencia
         public String Nombre
         {
             get { return nombre; }
-            set { this.nombre = value}
+            set { this.nombre = value; }
         }
         public bool Estado
         { 

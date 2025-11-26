@@ -16,7 +16,15 @@ namespace Persistencia
             // TODO: añadir clase Transformer
             EjemplarDato a = null;
 
-            BD.TablaEjemplar.Add(a);
+            BD.TablaEjemplares.Add(a);
+        }
+
+        public static void CREATE(Usuario entity)
+        {
+            // TODO: añadir clase Transformer
+            UsuarioDato u = null;
+
+            BD.TablaUsuarios.Add(u);
         }
     }
 }
