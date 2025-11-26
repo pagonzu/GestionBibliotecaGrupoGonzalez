@@ -19,10 +19,10 @@ namespace Persistencia
             BD.TablaEjemplares.Add(a);
         }
 
-        public static void CREATE(Usuario entity)
+        public static void CREATE(Usuario e)
         {
             // TODO: añadir clase Transformer
-            UsuarioDato u = null;
+            UsuarioDato u = Transformers.UsuarioAUsuarioDato(e);
 
             BD.TablaUsuarios.Add(u);
         }
