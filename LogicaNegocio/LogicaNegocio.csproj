@@ -45,5 +45,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioLogica.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModeloDominio\ModeloDominio.csproj">
+      <Project>{61d81bf5-4f12-463a-89bb-0abbd5c89fef}</Project>
+      <Name>ModeloDominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{c80e8ed8-5055-4215-a546-ed17db26c811}</Project>
+      <Name>Persistencia</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
