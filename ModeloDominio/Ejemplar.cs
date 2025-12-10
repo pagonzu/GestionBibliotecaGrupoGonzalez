@@ -10,10 +10,10 @@ namespace ModeloDominio
 {
     public class Ejemplar
     {
-        private string _codigo;
-        private bool _estado;
-        private Trabajador _trabajador;
-        private Documento _documento;
+        private string codigo;
+        private bool estado;
+        private Trabajador trabajador;
+        private Documento documento;
         public Ejemplar(string codigo, bool estado, Trabajador trabajadorCompra, Documento documento)
         {
             Codigo = codigo;
@@ -24,26 +24,26 @@ namespace ModeloDominio
 
         public bool Estado
         {
-            get { return _estado; }
-            set { _estado = value; }
+            get { return estado; }
+            set { estado = value; }
         }
         public string Codigo
         {
-            get { return _codigo; }
-            set { _codigo = value; }
+            get { return codigo; }
+            set { codigo = value; }
         }
 
 
         public Trabajador Trabajador
         {
-            get { return _trabajador; }
-            set { _trabajador = value; }
+            get { return trabajador; }
+            set { trabajador = value; }
         }
 
         public Documento Documento
         {
-            get { return _documento; }
-            set { _documento = value; }
+            get { return documento; }
+            set { documento = value; }
         }
 
 

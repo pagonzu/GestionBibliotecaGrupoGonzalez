@@ -11,8 +11,8 @@ namespace ModeloDominio
     internal class Audiolibro : Documento
     {
 
-        private string _formato;
-        private int _duracionSegundos;
+        private string formato;
+        private int duracionSegundos;
         public Audiolibro(string isbn, int añoEdicion, string titulo, string autor, string editorial, bool esLibro, bool esAudioLibro, string formato, int duracion)
             : base(isbn, añoEdicion, titulo, autor, editorial,esLibro, esAudioLibro)
         {
@@ -21,15 +21,15 @@ namespace ModeloDominio
         }
         public string Formato
         {
-            get { return _formato; }
-            set { _formato = value; }
+            get { return formato; }
+            set { formato = value; }
         }
 
 
         public int DuracionSegundos
         {
-            get { return _duracionSegundos; }
-            set { _duracionSegundos = value; }
+            get { return duracionSegundos; }
+            set { duracionSegundos = value; }
         }
 
 
