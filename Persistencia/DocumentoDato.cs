@@ -8,75 +8,75 @@ namespace Persistencia
 {
     internal class DocumentoDato : Entity<String>
     {
-        private int _año_edicion;
-        private String _titulo;
-        private String _autor;
-        private String _editorial;
-        private bool _esLibro;
-        private bool _esAudioLibro;
-        private String _formato;
-        private int _duracionSegundos;
+        private int añoEdicion;
+        private String titulo;
+        private String autor;
+        private String editorial;
+        private bool esLibro;
+        private bool esAudioLibro;
+        private String formato;
+        private int duracionSegundos;
 
         public DocumentoDato(String ISBN, int año, string titulo, string autor, string editorial,
                              bool esLibro, bool esAudioLibro, string formato, int duracion)
             : base(ISBN)
         {
-            this._año_edicion = año;
-            this._titulo = titulo;
-            this._autor = autor;
-            this._editorial = editorial;
-            this._esLibro = esLibro;
-            this._esAudioLibro = esAudioLibro;
-            this._formato = formato;
-            this._duracionSegundos = duracion;
+            this.añoEdicion = año;
+            this.titulo = titulo;
+            this.autor = autor;
+            this.editorial = editorial;
+            this.esLibro = esLibro;
+            this.esAudioLibro = esAudioLibro;
+            this.formato = formato;
+            this.duracionSegundos = duracion;
         }
 
         public int AñoEdicion
         {
-            get { return _año_edicion; }
-            set { _año_edicion = value; }
+            get { return añoEdicion; }
+            set { añoEdicion = value; }
         }
 
         public String Titulo
         {
-            get { return _titulo; }
-            set { _titulo = value; }
+            get { return titulo; }
+            set { titulo = value; }
         }
 
         public String Autor
         {
-            get { return _autor; }
-            set { _autor = value; }
+            get { return autor; }
+            set { autor = value; }
         }
 
         public String Editorial
         {
-            get { return _editorial; }
-            set { _editorial = value; }
+            get { return editorial; }
+            set { editorial = value; }
         }
 
         public bool EsLibro
         {
-            get { return _esLibro; }
-            set { _esLibro = value; }
+            get { return esLibro; }
+            set { esLibro = value; }
         }
 
         public bool EsAudioLibro
         {
-            get { return _esAudioLibro; }
-            set { _esAudioLibro = value; }
+            get { return esAudioLibro; }
+            set { esAudioLibro = value; }
         }
 
         public String Formato
         {
-            get { return _formato; }
-            set { _formato = value; }
+            get { return formato; }
+            set { formato = value; }
         }
 
         public int DuracionSegundos
         {
-            get { return _duracionSegundos; }
-            set { _duracionSegundos = value; }
+            get { return duracionSegundos; }
+            set { duracionSegundos = value; }
         }
     }
 }

@@ -10,13 +10,13 @@ namespace Persistencia
     internal class EjemplarDato: Entity<String>
     {
         private bool estado;
-        private String id_Trabajador;
+        private String idTrabajador;
         private String isbn;
 
         public EjemplarDato(String codigo, bool estado,String id_t,String ISBN): base(codigo)
         {
             this.estado = estado;
-            this.id_Trabajador = id_t;
+            this.idTrabajador = id_t;
             this.isbn = ISBN;
         }
         public bool Estado
@@ -28,8 +28,8 @@ namespace Persistencia
 
         public String Trabajador
         {
-            get { return id_Trabajador; }
-            set { id_Trabajador = value; }
+            get { return idTrabajador; }
+            set { idTrabajador = value; }
         }
 
         public String ISBN

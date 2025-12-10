@@ -8,44 +8,44 @@ namespace Persistencia
 {
     internal class PersonalSalaDatos : Entity<int>
     {
-        private String _nombre;
-        private String _password;
-        private String _tipoTrabajador;
-        private int _idSala;
+        private String nombre;
+        private String password;
+        private String tipoTrabajador;
+        private int idSala;
 
         public PersonalSalaDatos(int idTrabajador, String nombre, String password, String tipoTrabajador, int idSala)
             : base(idTrabajador)
         {
-            this._nombre = nombre;
-            this._password = password;
-            this._tipoTrabajador = tipoTrabajador;
-            this._idSala = idSala;
+            this.nombre = nombre;
+            this.password = password;
+            this.tipoTrabajador = tipoTrabajador;
+            this.idSala = idSala;
         }
 
         
 
         public String Nombre
         {
-            get { return _nombre; }
-            set { _nombre = value; }
+            get { return nombre; }
+            set { nombre = value; }
         }
 
         public String Password
         {
-            get { return _password; }
-            set { _password = value; }
+            get { return password; }
+            set { password = value; }
         }
 
         public String TipoTrabajador
         {
-            get { return _tipoTrabajador; }
-            set { _tipoTrabajador = value; }
+            get { return tipoTrabajador; }
+            set { tipoTrabajador = value; }
         }
 
         public int IdSala
         {
-            get { return _idSala; }
-            set { _idSala = value; }
+            get { return idSala; }
+            set { idSala = value; }
         }
     }
 }

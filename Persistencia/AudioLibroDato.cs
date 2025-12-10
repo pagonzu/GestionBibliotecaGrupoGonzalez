@@ -6,29 +6,29 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class AudiolibroDato : DocumentoDato
+    internal class AudioLibroDato : DocumentoDato
     {
-        private String _formato;
-        private int _duracionSegundos;
+        private String formato;
+        private int duracionSegundos;
 
-        public AudiolibroDato(String ISBN, int año, string titulo, string autor, string editorial,
+        public AudioLibroDato(String ISBN, int año, string titulo, string autor, string editorial,
                               bool esLibro, bool esAudioLibro, string formato, int duracion)
             : base(ISBN, año, titulo, autor, editorial, esLibro, esAudioLibro, formato, duracion)
         {
-            this._formato = formato;
-            this._duracionSegundos = duracion;
+            this.formato = formato;
+            this.duracionSegundos = duracion;
         }
 
         public String Formato
         {
-            get { return _formato; }
-            set { _formato = value; }
+            get { return formato; }
+            set { formato = value; }
         }
 
         public int DuracionSegundos
         {
-            get { return _duracionSegundos; }
-            set { _duracionSegundos = value; }
+            get { return duracionSegundos; }
+            set { duracionSegundos = value; }
         }
     }
 }
