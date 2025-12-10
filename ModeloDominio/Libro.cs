@@ -10,8 +10,8 @@ namespace ModeloDominio
 {
     internal class Libro : Documento
     {
-        public Libro(string isbn, int añoEdicion, string titulo, string autor, string editorial, bool esLibro, bool esAudioLibro)
-            : base(isbn, añoEdicion, titulo, autor, editorial,esLibro, esAudioLibro)
+        public Libro(string isbn, int añoEdicion, string titulo, string autor, string editorial)
+            : base(isbn, añoEdicion, titulo, autor, editorial)
         {
         }
 

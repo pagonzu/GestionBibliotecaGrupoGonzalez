@@ -25,15 +25,14 @@ namespace ModeloDominio
             private bool esLibro;
             private bool esAudioLibro;
 
-            public Documento(string isbn, int año, string titulo, string autor, string editorial, bool esLibro, bool esAudioLibro)
+            public Documento(string isbn, int año, string titulo, string autor, string editorial)
             {
                 isbn = isbn;
                 añoEdicion = año;
                 titulo = titulo;
                 autor = autor;
                 editorial = editorial;
-                this.esLibro = esLibro;
-                this.esAudioLibro = esAudioLibro;
+                
             }
 
             public string ISBN
@@ -68,8 +67,14 @@ namespace ModeloDominio
 
             
 
-            
-            
+           
+
+
+
+
+
+
+
         }
     }
 }

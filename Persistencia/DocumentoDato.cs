@@ -17,18 +17,14 @@ namespace Persistencia
         private String formato;
         private int duracionSegundos;
 
-        public DocumentoDato(String ISBN, int año, string titulo, string autor, string editorial,
-                             bool esLibro, bool esAudioLibro, string formato, int duracion)
+        public DocumentoDato(String ISBN, int año, string titulo, string autor, string editorial)
             : base(ISBN)
         {
             this.añoEdicion = año;
             this.titulo = titulo;
             this.autor = autor;
             this.editorial = editorial;
-            this.esLibro = esLibro;
-            this.esAudioLibro = esAudioLibro;
-            this.formato = formato;
-            this.duracionSegundos = duracion;
+            
         }
 
         public int AñoEdicion
@@ -55,28 +51,6 @@ namespace Persistencia
             set { editorial = value; }
         }
 
-        public bool EsLibro
-        {
-            get { return esLibro; }
-            set { esLibro = value; }
-        }
-
-        public bool EsAudioLibro
-        {
-            get { return esAudioLibro; }
-            set { esAudioLibro = value; }
-        }
-
-        public String Formato
-        {
-            get { return formato; }
-            set { formato = value; }
-        }
-
-        public int DuracionSegundos
-        {
-            get { return duracionSegundos; }
-            set { duracionSegundos = value; }
-        }
+        
     }
 }
