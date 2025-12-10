@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Audiolibro : Documento
+    public class AudioLibro : Documento
     {
 
         private string formato;
