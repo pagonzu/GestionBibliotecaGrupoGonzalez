@@ -12,8 +12,8 @@ namespace Persistencia
         private int duracionSegundos;
 
         public AudioLibroDato(String ISBN, int año, string titulo, string autor, string editorial,
-                              bool esLibro, bool esAudioLibro, string formato, int duracion)
-            : base(ISBN, año, titulo, autor, editorial, esLibro, esAudioLibro, formato, duracion)
+                               string formato, int duracion)
+            : base(ISBN, año, titulo, autor, editorial)
         {
             this.formato = formato;
             this.duracionSegundos = duracion;
