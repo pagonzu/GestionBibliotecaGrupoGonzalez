@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    internal class Audiolibro : Documento
+    public class AudioLibro : Documento
     {
 
         private string formato;
         private int duracionSegundos;
-        public Audiolibro(string isbn, int añoEdicion, string titulo, string autor, string editorial, bool esLibro, bool esAudioLibro, string formato, int duracion)
+        public AudioLibro(string isbn, int añoEdicion, string titulo, string autor, string editorial, bool esLibro, bool esAudioLibro, string formato, int duracion)
             : base(isbn, añoEdicion, titulo, autor, editorial,esLibro, esAudioLibro)
         {
             Formato = formato;
