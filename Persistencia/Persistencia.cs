@@ -11,10 +11,6 @@ namespace Persistencia
 {
     public class Persistencia
     {
-
-        // ----------------------------------------------------------------
-        // SECCIÓN: USUARIOS (Ya tenías parte de esto)
-        // ----------------------------------------------------------------
         public static void CREATE(Usuario entity)
         {
             UsuarioDato u = Transformers.UsuarioAUsuarioDato(entity);
@@ -33,25 +29,21 @@ namespace Persistencia
 
         public static void UPDATE(Usuario entity)
         {
-            // Buscamos el dato antiguo por su ID (o DNI/Correo)
-            var datoExistente = BD.TablaUsuarios.FirstOrDefault(x => x.Id == entity.Id);
+            var datoExistente = BD.TablaUsuarios.FirstOrDefault(x => x.Id == entity.DNI);
 
             if (datoExistente != null)
             {
-                BD.TablaUsuarios.Remove(datoExistente); // Borramos el viejo
-                BD.TablaUsuarios.Add(Transformers.UsuarioAUsuarioDato(entity)); // Añadimos el nuevo actualizado
+                BD.TablaUsuarios.Remove(datoExistente);
+                BD.TablaUsuarios.Add(Transformers.UsuarioAUsuarioDato(entity));
             }
         }
 
         public static void DELETE(Usuario entity)
         {
-            var dato = BD.TablaUsuarios.FirstOrDefault(x => x.Id == entity.Id);
+            var dato = BD.TablaUsuarios.FirstOrDefault(x => x.Id == entity.DNI);
             if (dato != null) BD.TablaUsuarios.Remove(dato);
         }
 
-        // ----------------------------------------------------------------
-        // SECCIÓN: EJEMPLARES (Corrección del TODO)
-        // ----------------------------------------------------------------
         public static void CREATE(Ejemplar entity)
         {
             EjemplarDato a = Transformers.EjemplarAEjemplarDato(entity);
@@ -74,7 +66,7 @@ namespace Persistencia
 
         public static void UPDATE(Ejemplar entity)
         {
-            var dato = BD.TablaEjemplares.FirstOrDefault(x => x.Id == entity.Id);
+            var dato = BD.TablaEjemplares.FirstOrDefault(x => x.Id == entity.Codigo);
             if (dato != null)
             {
                 BD.TablaEjemplares.Remove(dato);
@@ -84,13 +76,10 @@ namespace Persistencia
 
         public static void DELETE(Ejemplar entity)
         {
-            var dato = BD.TablaEjemplares.FirstOrDefault(x => x.Id == entity.Id);
+            var dato = BD.TablaEjemplares.FirstOrDefault(x => x.Id == entity.Codigo);
             if (dato != null) BD.TablaEjemplares.Remove(dato);
         }
 
-        // ----------------------------------------------------------------
-        // SECCIÓN: LIBROS
-        // ----------------------------------------------------------------
         public static void CREATE(Libro entity)
         {
             LibroDato l = Transformers.LibroALibroDato(entity);
@@ -106,7 +95,6 @@ namespace Persistencia
 
         public static void UPDATE(Libro entity)
         {
-            // Asumiendo que el identificador es ISBN o Id
             var dato = BD.TablaLibros.FirstOrDefault(x => x.ISBN == entity.ISBN);
             if (dato != null)
             {
@@ -121,9 +109,7 @@ namespace Persistencia
             if (dato != null) BD.TablaLibros.Remove(dato);
         }
 
-        // ----------------------------------------------------------------
-        // SECCIÓN: AUDIOLIBROS
-        // ----------------------------------------------------------------
+ 
         public static void CREATE(AudioLibro entity)
         {
             AudioLibroDato ad = Transformers.AudioLibroAAudioLibroDato(entity);
@@ -139,7 +125,7 @@ namespace Persistencia
 
         public static void UPDATE(AudioLibro entity)
         {
-            var dato = BD.TablaAudioLibros.FirstOrDefault(x => x.Id == entity.Id);
+            var dato = BD.TablaAudioLibros.FirstOrDefault(x => x.Id == entity.ISBN);
             if (dato != null)
             {
                 BD.TablaAudioLibros.Remove(dato);
@@ -149,13 +135,10 @@ namespace Persistencia
 
         public static void DELETE(AudioLibro entity)
         {
-            var dato = BD.TablaAudioLibros.FirstOrDefault(x => x.Id == entity.Id);
+            var dato = BD.TablaAudioLibros.FirstOrDefault(x => x.Id == entity.ISBN);
             if (dato != null) BD.TablaAudioLibros.Remove(dato);
         }
 
-        // ----------------------------------------------------------------
-        // SECCIÓN: PRESTAMOS
-        // ----------------------------------------------------------------
         public static void CREATE(Prestamo entity)
         {
             PrestamoDato p = Transformers.PrestamoAPrestamoDato(entity);
@@ -185,30 +168,26 @@ namespace Persistencia
             if (dato != null) BD.TablaPrestamos.Remove(dato);
         }
 
-        // ----------------------------------------------------------------
-        // SECCIÓN: PERSONAL (Adquisición y Sala)
-        // ----------------------------------------------------------------
-
-        // PERSONAL ADQUISICION
-        public static void CREATE(PersonalAdquisicion entity)
+        public static void CREATE(PersonalAdquisiciones entity)
         {
-            PersonalAdquisicionDato p = Transformers.PersonalAdqAPersonalAdqDato(entity);
+            PersonalAdquisicionesDatos p = Transformers.PersonalAdqAPersonalAdqDato(entity);
             BD.TablaPersonalAdquisicion.Add(p);
         }
-        public static void CREATE(Ejemplar entity)
-        {
-            // TODO: añadir clase Transformer
-            EjemplarDato a = null;
 
-            BD.TablaEjemplares.Add(a);
-        }
+        //public static void CREATE(Ejemplar entity)
+        //{
+      
+        //    EjemplarDato a = null;
 
-        public static void CREATE(Usuario e)
-        {
-            // TODO: añadir clase Transformer
-            UsuarioDato u = Transformers.UsuarioAUsuarioDato(e);
+        //    BD.TablaEjemplares.Add(a);
+        //}
 
-            BD.TablaUsuarios.Add(u);
-        }
+        //public static void CREATE(Usuario e)
+        //{
+   
+        //    UsuarioDato u = Transformers.UsuarioAUsuarioDato(e);
+
+        //    BD.TablaUsuarios.Add(u);
+        //}
     }
 }

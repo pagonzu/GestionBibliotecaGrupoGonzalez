@@ -22,12 +22,30 @@ namespace ModeloDominio
             this.trabajador = trabajador;
             this.usuario = usuario;
         }
-        public int getId() { return id; }
-        public DateTime getFecha() { return fecha; }
-        public bool getEstado() { return estado; }
-        public PersonalSala getTrabajador() { return trabajador; }
-        public Usuario getUsuario() { return usuario; }
-        public void setFecha(DateTime fecha) { this.fecha = fecha; }
-        public void setEstado(bool estado) {  this.estado = estado; }
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        public DateTime Fecha
+        {
+            get { return fecha; }
+            set { fecha = value; }
+        }
+        public bool Estado
+        {
+            get { return estado; }
+            set { estado = value; }
+        }
+        public PersonalSala Trabajador 
+        {
+            get { return trabajador; }
+            set { trabajador = value; }
+        }
+        public Usuario Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; }
+        }
     }
 }

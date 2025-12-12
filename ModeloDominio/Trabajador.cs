@@ -36,6 +36,9 @@ namespace ModeloDominio
         }
 
         public String Password
-        { set { password = value; } }
+        { 
+            get { return password; }
+            set { password = value; }
+        }
     }
 }
