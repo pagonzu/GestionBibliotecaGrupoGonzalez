@@ -8,25 +8,25 @@ namespace ModeloDominio
 {
     public abstract class Trabajador
     {
-        private int idTrabajador;
+        private String idTrabajador;
         private String nombre;
         private String password;
 
         public Trabajador(String nombre, String password)
         {
-            idTrabajador = 0;
+            idTrabajador = "";
             this.nombre = nombre;
             this.password = password;
         }
 
-        public Trabajador(int idTrabajador, String nombre, String password)
+        public Trabajador(String idTrabajador, String nombre, String password)
         {
             this.idTrabajador = idTrabajador;
             this.nombre = nombre;
             this.password = password;
         }
 
-        public int IdTrabajador
+        public String IdTrabajador
         { get { return idTrabajador; } }
 
         public String Nombre

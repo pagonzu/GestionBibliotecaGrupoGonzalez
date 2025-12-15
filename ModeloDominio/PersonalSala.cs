@@ -15,7 +15,7 @@ namespace ModeloDominio
             this.idSala = 0;
         }
 
-        public PersonalSala(int idTrabajador, int idSala, String nombre, String password) : base(idTrabajador, nombre, password)
+        public PersonalSala(String idTrabajador, int idSala, String nombre, String password) : base(idTrabajador, nombre, password)
         {
             this.idSala = idSala;
         }

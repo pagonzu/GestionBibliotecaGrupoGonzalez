@@ -8,13 +8,13 @@ namespace ModeloDominio
 {
     public class Prestamo
     {
-        private int id;
+        private String id;
         private DateTime fecha;
         bool estado;
         PersonalSala trabajador;
         Usuario usuario;
 
-        public Prestamo(int id, DateTime fecha, bool estado, PersonalSala trabajador, Usuario usuario)
+        public Prestamo(String id, DateTime fecha, bool estado, PersonalSala trabajador, Usuario usuario)
         {
             this.id = id;
             this.fecha = fecha;
@@ -22,7 +22,7 @@ namespace ModeloDominio
             this.trabajador = trabajador;
             this.usuario = usuario;
         }
-        public int Id
+        public String Id
         {
             get { return id; }
             set { id = value; }

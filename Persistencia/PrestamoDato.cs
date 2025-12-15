@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class PrestamoDato : Entity<int>
+    internal class PrestamoDato : Entity<String>
     {
         private DateTime fechaPrestamo;
         private bool estado;
-        private int idTrabajador;
+        private String idTrabajador;
         private String dniUsuario;
 
-        public PrestamoDato(int idPrestamo, DateTime fechaPrestamo, bool estado, int idTrabajador, string dniUsuario) : base(idPrestamo)
+        public PrestamoDato(String idPrestamo, DateTime fechaPrestamo, bool estado, String idTrabajador, string dniUsuario) : base(idPrestamo)
         {
             this.fechaPrestamo = fechaPrestamo;
             this.estado = estado;
@@ -30,7 +30,7 @@ namespace Persistencia
             get { return estado; }
             set { estado = value; }
         }
-        public int IdTrabajador
+        public String IdTrabajador
         {
             get { return idTrabajador; }
             set { idTrabajador = value; }

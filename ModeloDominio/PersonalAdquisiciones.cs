@@ -15,7 +15,7 @@ namespace ModeloDominio
             this.idAdquisiciones = 0;
         }
 
-        public PersonalAdquisiciones(int idTrabajador, int idAdquisiciones, String nombre, String password) : base(idTrabajador, nombre, password)
+        public PersonalAdquisiciones(String idTrabajador, int idAdquisiciones, String nombre, String password) : base(idTrabajador, nombre, password)
         {
             this.idAdquisiciones = idAdquisiciones;
         }

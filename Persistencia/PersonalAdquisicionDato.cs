@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class PersonalAdquisicionesDatos : Entity<int>
+    internal class PersonalAdquisicionesDatos : Entity<String>
     {
         private String nombre;
         private String password;
         private String tipoTrabajador;
         private int idAdquisiciones;
 
-        public PersonalAdquisicionesDatos(int idTrabajador, String nombre, String password, String tipoTrabajador, int idAdquisiciones)
+        public PersonalAdquisicionesDatos(String idTrabajador, String nombre, String password, String tipoTrabajador, int idAdquisiciones)
             : base(idTrabajador)
         {
             this.nombre = nombre;
