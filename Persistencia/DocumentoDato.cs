@@ -8,6 +8,7 @@ namespace Persistencia
 {
     internal class DocumentoDato : Entity<String>
     {
+        private String isbn;
         private int añoEdicion;
         private String titulo;
         private String autor;
@@ -20,11 +21,17 @@ namespace Persistencia
         public DocumentoDato(String ISBN, int año, string titulo, string autor, string editorial)
             : base(ISBN)
         {
+            this.isbn = ISBN;
             this.añoEdicion = año;
             this.titulo = titulo;
             this.autor = autor;
             this.editorial = editorial;
             
+        }
+
+        public String ISBN
+        {
+            get { return this.isbn; }
         }
 
         public int AñoEdicion
