@@ -12,13 +12,15 @@ namespace Persistencia
         private bool estado;
         private String idTrabajador;
         private String dniUsuario;
+        private List<String> listaEjemplares;
 
-        public PrestamoDato(String idPrestamo, DateTime fechaPrestamo, bool estado, String idTrabajador, string dniUsuario) : base(idPrestamo)
+        public PrestamoDato(String idPrestamo, DateTime fechaPrestamo, bool estado, String idTrabajador, string dniUsuario, List<String> listaEjemplares) : base(idPrestamo)
         {
             this.fechaPrestamo = fechaPrestamo;
             this.estado = estado;
             this.idTrabajador = idTrabajador;
             this.dniUsuario = dniUsuario;
+            this.listaEjemplares = listaEjemplares;
         }
         public DateTime FechaPrestamo
         {
@@ -39,6 +41,11 @@ namespace Persistencia
         {
             get { return dniUsuario; }
             set { dniUsuario = value; }
+        }
+        public List<string> ListaEjemplares
+        {
+            get { return listaEjemplares; }
+            set { listaEjemplares = value; }
         }
     }
 }

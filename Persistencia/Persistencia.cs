@@ -11,6 +11,7 @@ namespace Persistencia
 {
     public class Persistencia
     {
+        //USUARIO
         public static void CREATE(Usuario entity)
         {
             UsuarioDato u = Transformers.UsuarioAUsuarioDato(entity);
@@ -49,7 +50,8 @@ namespace Persistencia
             var dato = BD.TablaUsuarios.FirstOrDefault(x => x.Id == entity.DNI);
             if (dato != null) BD.TablaUsuarios.Remove(dato);
         }
-
+        
+        //EJEMPLAR
         public static void CREATE(Ejemplar entity)
         {
             EjemplarDato a = Transformers.EjemplarAEjemplarDato(entity);
@@ -86,6 +88,7 @@ namespace Persistencia
             if (dato != null) BD.TablaEjemplares.Remove(dato);
         }
 
+        //LIBRO
         public static void CREATE(Libro entity)
         {
             LibroDato l = Transformers.LibroALibroDato(entity);
@@ -97,6 +100,13 @@ namespace Persistencia
             List<Libro> lista = new List<Libro>();
             foreach (var d in BD.TablaLibros) lista.Add(Transformers.LibroDatoALibro(d));
             return lista;
+        }
+
+        public static Libro READ_LIBRO(string isbn)
+        {
+            foreach (var d in BD.TablaLibros)
+                if (d.ISBN == isbn) return Transformers.LibroDatoALibro(d);
+            return null;
         }
 
         public static void UPDATE(Libro entity)
@@ -115,7 +125,7 @@ namespace Persistencia
             if (dato != null) BD.TablaLibros.Remove(dato);
         }
 
- 
+        //AUDIOLIBRO
         public static void CREATE(AudioLibro entity)
         {
             AudioLibroDato ad = Transformers.AudioLibroAAudioLibroDato(entity);
@@ -127,6 +137,13 @@ namespace Persistencia
             List<AudioLibro> lista = new List<AudioLibro>();
             foreach (var d in BD.TablaAudioLibros) lista.Add(Transformers.AudioLibroDatoAAudioLibro(d));
             return lista;
+        }
+
+        public static AudioLibro READ_AUDIOLIBRO(string isbn)
+        {
+            foreach (var d in BD.TablaAudioLibros)
+                if (d.ISBN == isbn) return Transformers.AudioLibroDatoAAudioLibro(d);
+            return null;
         }
 
         public static void UPDATE(AudioLibro entity)
@@ -145,6 +162,7 @@ namespace Persistencia
             if (dato != null) BD.TablaAudioLibros.Remove(dato);
         }
 
+        //PRESTAMO
         public static void CREATE(Prestamo entity)
         {
             PrestamoDato p = Transformers.PrestamoAPrestamoDato(entity);
@@ -156,6 +174,13 @@ namespace Persistencia
             List<Prestamo> lista = new List<Prestamo>();
             foreach (var d in BD.TablaPrestamos) lista.Add(Transformers.PrestamoDatoAPrestamo(d));
             return lista;
+        }
+
+        public static Prestamo READ_PRESTAMO(string idPrestamo)
+        {
+            Prestamo prestamo = null;
+            foreach (var ps in BD.TablaPrestamos) if (ps.Id == idPrestamo) prestamo = Transformers.PrestamoDatoAPrestamo(ps);
+            return prestamo;
         }
 
         public static void UPDATE(Prestamo entity)
@@ -174,10 +199,11 @@ namespace Persistencia
             if (dato != null) BD.TablaPrestamos.Remove(dato);
         }
 
-        public static void CREATE(PersonalAdquisiciones entity)
+        //PERSONAL SALA
+        public static void CREATE(PersonalSala entity)
         {
-            PersonalAdquisicionDato p = Transformers.PersonalAdqAPersonalAdqDato(entity);
-            BD.TablaPersonalAdquisicion.Add(p);
+            PersonalSalaDato p = Transformers.PersonalSalaAPersonalSalaDato(entity);
+            BD.TablaPersonalSala.Add(p);
         }
 
         public static PersonalSala READ_PERSONAL_SALA(string usuario)
@@ -187,6 +213,35 @@ namespace Persistencia
             return personalSala;
         }
 
+        public static List<PersonalSala> READ_ALL_PERSONAL_SALA()
+        {
+            List<PersonalSala> lista = new List<PersonalSala>();
+            foreach (var d in BD.TablaPersonalSala) lista.Add(Transformers.PersonalSalaDatoAPersonalSala(d));
+            return lista;
+        }
+
+        public static void UPDATE(PersonalSala entity)
+        {
+            var dato = BD.TablaPersonalSala.FirstOrDefault(x => x.Id == entity.IdPersonal);
+            if (dato != null)
+            {
+                BD.TablaPersonalSala.Remove(dato);
+                BD.TablaPersonalSala.Add(Transformers.PersonalSalaAPersonalSalaDato(entity));
+            }
+        }
+
+        public static void DELETE(PersonalSala entity)
+        {
+            var dato = BD.TablaPersonalSala.FirstOrDefault(x => x.Id == entity.IdPersonal);
+            if (dato != null) BD.TablaPersonalSala.Remove(dato);
+        }
+
+        //PERSONAL ADQUISICIONES
+        public static void CREATE(PersonalAdquisiciones entity)
+        {
+            PersonalAdquisicionDato p = Transformers.PersonalAdqAPersonalAdqDato(entity);
+            BD.TablaPersonalAdquisicion.Add(p);
+        }
         public static PersonalAdquisiciones READ_PERSONAL_ADQUISICIONES(string usuario)
         {
             PersonalAdquisiciones personalAdquisiciones = null;
@@ -194,19 +249,29 @@ namespace Persistencia
             return personalAdquisiciones;
         }
 
-        public static Prestamo READ_PRESTAMO(string idPrestamo)
+        public static List<PersonalAdquisiciones> READ_ALL_PERSONAL_ADQUISICIONES()
         {
-            Prestamo prestamo = null;
-            foreach (var ps in BD.TablaPrestamos) if (ps.Id == idPrestamo) prestamo = Transformers.PrestamoDatoAPrestamo(ps);
-            return prestamo;
+            List<PersonalAdquisiciones> lista = new List<PersonalAdquisiciones>();
+            foreach (var d in BD.TablaPersonalAdquisicion) lista.Add(Transformers.PersonalAdqDatoAPersonalAdq(d));
+            return lista;
         }
 
-        public static Ejemplar READ_EJEMPLAR(string idEjemplar)
+        public static void UPDATE(PersonalAdquisiciones entity)
         {
-            Ejemplar ejemplar = null;
-            foreach (var ej in BD.TablaEjemplares) if (ej.Id == idEjemplar) ejemplar = Transformers.EjemplarDatoAEjemplar(ps);
-            return ejemplar;
+            var dato = BD.TablaPersonalAdquisicion.FirstOrDefault(x => x.Id == entity.IdPersonal);
+            if (dato != null)
+            {
+                BD.TablaPersonalAdquisicion.Remove(dato);
+                BD.TablaPersonalAdquisicion.Add(Transformers.PersonalAdqAPersonalAdqDato(entity));
+            }
         }
+
+        public static void DELETE(PersonalAdquisiciones entity)
+        {
+            var dato = BD.TablaPersonalAdquisicion.FirstOrDefault(x => x.Id == entity.IdPersonal);
+            if (dato != null) BD.TablaPersonalAdquisicion.Remove(dato);
+        }
+
 
         //public static void CREATE(Ejemplar entity)
         //{

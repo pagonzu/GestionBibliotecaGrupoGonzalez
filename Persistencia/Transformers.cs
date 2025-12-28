@@ -1,9 +1,10 @@
+using ModeloDominio;
+using ModeloDominio.EditorDeTexto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ModeloDominio;
 
 namespace Persistencia
 {
@@ -56,8 +57,29 @@ namespace Persistencia
         {
             if (ed == null) return null;
 
-            return new Ejemplar(ed.Id, ed.Estado, ed.Prestado, null, null);
-            //return new Ejemplar(ed.Id, ed.Estado, ed.Prestado, ed.Trabajador, ed.ISBN); //Falta buscar en las tablas y sacar el objeto a partir de clave
+            PersonalAdquisiciones trabajador = null;
+            if (ed.Trabajador != null && BD.TablaPersonalAdquisicion.Contains(ed.Trabajador))
+            {
+                var trabajadorDato = BD.TablaPersonalAdquisicion[ed.Trabajador];
+                trabajador = PersonalAdqDatoAPersonalAdq(trabajadorDato);
+            }
+
+            Documento documento = null;
+            if (ed.ISBN != null)
+            {
+                if (BD.TablaLibros.Contains(ed.ISBN))
+                {
+                    var libroDato = BD.TablaLibros[ed.ISBN];
+                    documento = LibroDatoALibro(libroDato);
+                }
+                else if (BD.TablaAudioLibros.Contains(ed.ISBN))
+                {
+                    var audioDato = BD.TablaAudioLibros[ed.ISBN];
+                    documento = AudioLibroDatoAAudioLibro(audioDato);
+                }
+            }
+
+            return new Ejemplar(ed.Id, ed.Estado, ed.Prestado, trabajador, documento);
         }
 
         public static EjemplarDato EjemplarAEjemplarDato(Ejemplar e)
@@ -71,15 +93,47 @@ namespace Persistencia
         {
             if (pd == null) return null;
 
-            return new Prestamo(pd.Id, pd.FechaPrestamo, pd.Estado, null, null, null);
-            //return new Prestamo(pd.Id, pd.FechaPrestamo, pd.Estado, pd.IdTrabajador, pd.DNIUsuario, null);  //Falta buscar en las tablas y sacar el objeto a partir de clave; 
+            PersonalSala trabajador = null;
+            if (pd.IdTrabajador != null && BD.TablaPersonalSala.Contains(pd.IdTrabajador))
+            {
+                var trabajadorDato = BD.TablaPersonalSala[pd.IdTrabajador];
+                trabajador = PersonalSalaDatoAPersonalSala(trabajadorDato);
+            }
+
+            Usuario usuario = null;
+            if(pd.DNIUsuario != null && BD.TablaUsuarios.Contains(pd.DNIUsuario))
+            {
+                var usuarioDato = BD.TablaUsuarios[pd.DNIUsuario];
+                usuario = UsuarioDatoAUsuario(usuarioDato);
+            }
+
+            List<Ejemplar> listaEjemplares = new List<Ejemplar>();
+            if (pd.ListaEjemplares != null)
+            {
+                foreach (string idEjemplar in pd.ListaEjemplares)
+                {
+                    if (BD.TablaEjemplares.Contains(idEjemplar))
+                    {
+                        var ejemplarDato = BD.TablaEjemplares[idEjemplar];
+                        listaEjemplares.Add(EjemplarDatoAEjemplar(ejemplarDato));
+                    }
+                }
+            }
+
+            return new Prestamo(pd.Id, pd.FechaPrestamo, pd.Estado, trabajador, usuario, listaEjemplares);
         }
 
         public static PrestamoDato PrestamoAPrestamoDato(Prestamo p)
         {
             if (p == null) return null;
 
-            return new PrestamoDato(p.Id,p.Fecha,p.Estado,p.Trabajador.IdPersonal,p.Usuario.DNI);
+            List<string> listaEjemplares = new List<string>();
+            foreach (Ejemplar ejemplar in p.Ejemplares)
+            {
+                listaEjemplares.Add(ejemplar.Codigo);
+            }
+
+            return new PrestamoDato(p.Id,p.Fecha,p.Estado,p.Trabajador.IdPersonal,p.Usuario.DNI,listaEjemplares);
         }
 
         public static PersonalAdquisiciones PersonalAdqDatoAPersonalAdq(PersonalAdquisicionDato pad)
