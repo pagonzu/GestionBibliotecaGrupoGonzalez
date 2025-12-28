@@ -8,18 +8,20 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Ejemplar
+    public class Ejemplar: IEquatable<Ejemplar>
     {
         private string codigo;
         private bool estado;
-        private Trabajador trabajador;
+        private bool prestado;
+        private Personal trabajador;
         private Documento documento;
-        public Ejemplar(string codigo, bool estado, Trabajador trabajadorCompra, Documento documento)
+        public Ejemplar(string codigo, bool estado, bool prestado, Personal trabajadorCompra, Documento documento)
         {
-            Codigo = codigo;
-            Estado = estado;
-            Trabajador = trabajadorCompra;
-            Documento = documento;
+            this.codigo = codigo;
+            this.estado = estado;
+            this.prestado = prestado;
+            this.trabajador = trabajadorCompra;
+            this.documento = documento;
         }
 
         public bool Estado
@@ -27,14 +29,18 @@ namespace ModeloDominio
             get { return estado; }
             set { estado = value; }
         }
+        public bool Prestado
+        {
+            get { return prestado; }
+            set { prestado = value; }
+        }
         public string Codigo
         {
             get { return codigo; }
             set { codigo = value; }
         }
 
-
-        public Trabajador Trabajador
+        public Personal Trabajador
         {
             get { return trabajador; }
             set { trabajador = value; }
@@ -46,6 +52,10 @@ namespace ModeloDominio
             set { documento = value; }
         }
 
-
+        public bool Equals(Ejemplar other)
+        {
+            if (other == null) return false;
+            return this.codigo == other.codigo;
+        }
     }
 }

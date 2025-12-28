@@ -8,16 +8,15 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class AudioLibro : Documento
+    public class AudioLibro : Documento, IEquatable<AudioLibro>
     {
-
         private string formato;
         private int duracionSegundos;
         public AudioLibro(string isbn, int añoEdicion, string titulo, string autor, string editorial, string formato, int duracion)
             : base(isbn, añoEdicion, titulo, autor, editorial)
         {
-            Formato = formato;
-            DuracionSegundos = duracion;
+            this.formato = formato;
+            this.duracionSegundos = duracion;
         }
         public string Formato
         {
@@ -25,15 +24,16 @@ namespace ModeloDominio
             set { formato = value; }
         }
 
-
         public int DuracionSegundos
         {
             get { return duracionSegundos; }
             set { duracionSegundos = value; }
         }
 
-
-
-
+        public bool Equals(AudioLibro other)
+        {
+            if (other == null) return false;
+            return this.ISBN == other.ISBN;
+        }
     }
 }

@@ -52,7 +52,7 @@
     <Compile Include="PrestamoDato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tabla.cs" />
-    <Compile Include="PersonalSalaDatos.cs" />
+    <Compile Include="PersonalSalaDato.cs" />
     <Compile Include="Transformers.cs" />
     <Compile Include="UsuarioDato.cs" />
   </ItemGroup>

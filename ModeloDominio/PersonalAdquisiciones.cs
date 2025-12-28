@@ -7,32 +7,23 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class PersonalAdquisiciones: Trabajador, IEquatable<PersonalAdquisiciones>
+    public class PersonalAdquisiciones: Personal, IEquatable<PersonalAdquisiciones>
     {
-        private int idAdquisiciones;
 
-        public PersonalAdquisiciones(String nombre, String password) : base(nombre, password) {
-            this.idAdquisiciones = 0;
-        }
+        public PersonalAdquisiciones(String nombre, String password) : base(nombre, password) {}
 
-        public PersonalAdquisiciones(String idTrabajador, int idAdquisiciones, String nombre, String password) : base(idTrabajador, nombre, password)
-        {
-            this.idAdquisiciones = idAdquisiciones;
-        }
-
-        public int IdAdquisiciones
-        {
-            get { return idAdquisiciones; }
-        }
+        public PersonalAdquisiciones(String idTrabajador, String nombre, String password) : base(idTrabajador, nombre, password)
+        {}
 
         public bool Equals(PersonalAdquisiciones other)
         {
-            return this.IdAdquisiciones == other.IdAdquisiciones;
+            if (other == null) return false;
+            return this.IdPersonal == other.IdPersonal;
         }
 
         public override string ToString()
         {
-            return "Personal Adquisición " + IdAdquisiciones + " | Nombre: " + Nombre;
+            return "Personal Adquisición " + IdPersonal + " | Nombre: " + Nombre;
         }
     }
 }

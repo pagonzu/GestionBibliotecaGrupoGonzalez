@@ -8,12 +8,17 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Libro : Documento
+    public class Libro : Documento, IEquatable<Libro>
     {
         public Libro(string isbn, int añoEdicion, string titulo, string autor, string editorial)
             : base(isbn, añoEdicion, titulo, autor, editorial)
         {
         }
 
+        public bool Equals(Libro other)
+        {
+            if (other == null) return false;
+            return this.ISBN.Equals(other.ISBN);
+        }
     }
 }

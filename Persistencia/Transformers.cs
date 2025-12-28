@@ -56,56 +56,58 @@ namespace Persistencia
         {
             if (ed == null) return null;
 
-            return new Ejemplar(ed.Id, ed.Estado, ed.Trabajador, ed.ISBN); //Falta buscar en las tablas y sacar el objeto a partir de clave
+            return new Ejemplar(ed.Id, ed.Estado, ed.Prestado, null, null);
+            //return new Ejemplar(ed.Id, ed.Estado, ed.Prestado, ed.Trabajador, ed.ISBN); //Falta buscar en las tablas y sacar el objeto a partir de clave
         }
 
         public static EjemplarDato EjemplarAEjemplarDato(Ejemplar e)
         {
             if (e == null) return null;
 
-            return new EjemplarDato(e.Codigo,e.Estado, e.Trabajador.IdTrabajador.ToString(), e.Documento.ISBN); //Revisar el ToString, quizas hay que cambiar algo en las tablas o Trabajador
+            return new EjemplarDato(e.Codigo, e.Estado, e.Prestado, e.Trabajador.IdPersonal, e.Documento.ISBN);
         }
 
         public static Prestamo PrestamoDatoAPrestamo(PrestamoDato pd)
         {
             if (pd == null) return null;
-   
-            return new Prestamo(pd.Id, pd.FechaPrestamo, pd.Estado, pd.IdTrabajador, pd.DNIUsuario);  //Falta buscar en las tablas y sacar el objeto a partir de clave; 
+
+            return new Prestamo(pd.Id, pd.FechaPrestamo, pd.Estado, null, null, null);
+            //return new Prestamo(pd.Id, pd.FechaPrestamo, pd.Estado, pd.IdTrabajador, pd.DNIUsuario, null);  //Falta buscar en las tablas y sacar el objeto a partir de clave; 
         }
 
         public static PrestamoDato PrestamoAPrestamoDato(Prestamo p)
         {
             if (p == null) return null;
 
-            return new PrestamoDato(p.Id,p.Fecha,p.Estado,p.Trabajador.IdTrabajador,p.Usuario.DNI);
+            return new PrestamoDato(p.Id,p.Fecha,p.Estado,p.Trabajador.IdPersonal,p.Usuario.DNI);
         }
 
-        public static PersonalAdquisiciones PersonalAdqDatoAPersonalAdq(PersonalAdquisicionesDatos pad)
+        public static PersonalAdquisiciones PersonalAdqDatoAPersonalAdq(PersonalAdquisicionDato pad)
         {
             if (pad == null) return null;
 
-            return new PersonalAdquisiciones(pad.Id, pad.IdAdquisiciones, pad.Nombre, pad.Password);
+            return new PersonalAdquisiciones(pad.Id, pad.Nombre, pad.Password);
         }
 
-        public static PersonalAdquisicionesDatos PersonalAdqAPersonalAdqDato(PersonalAdquisiciones pa)
+        public static PersonalAdquisicionDato PersonalAdqAPersonalAdqDato(PersonalAdquisiciones pa)
         {
             if (pa == null) return null;
 
-            return new PersonalAdquisicionesDatos(pa.IdTrabajador,pa.Nombre,pa.Password,pa.GetType().ToString(),pa.IdAdquisiciones);
+            return new PersonalAdquisicionDato(pa.IdPersonal, pa.Nombre, pa.Password);
         }
 
-        public static PersonalSala PersonalSalaDatoAPersonalSala(PersonalSalaDatos psd)
+        public static PersonalSala PersonalSalaDatoAPersonalSala(PersonalSalaDato psd)
         {
             if (psd == null) return null;
 
-            return new PersonalSala(psd.Id, psd.IdSala, psd.Nombre, psd.Password);
+            return new PersonalSala(psd.Id, psd.Nombre, psd.Password);
         }
 
-        public static PersonalSalaDatos PersonalSalaAPersonalSalaDato(PersonalSala ps)
+        public static PersonalSalaDato PersonalSalaAPersonalSalaDato(PersonalSala ps)
         {
             if (ps == null) return null;
 
-            return new PersonalSalaDatos(ps.IdTrabajador,ps.Nombre,ps.Password,ps.GetType().ToString(),ps.IdSala);
+            return new PersonalSalaDato(ps.IdPersonal, ps.Nombre, ps.Password);
         }
 
     }

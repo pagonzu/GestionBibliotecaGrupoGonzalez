@@ -14,13 +14,11 @@ namespace Persistencia
         private static Tabla<String, LibroDato> tablaLibros;
         private static Tabla<String, AudioLibroDato> tablaAudioLibros;
         private static Tabla<String, PrestamoDato> tablaPrestamos; 
-        private static Tabla<String, PersonalAdquisicionesDatos> tablaPersonalAdquisicion;
-        private static Tabla<String, PersonalSalaDatos> tablaPersonalSala;
+        private static Tabla<String, PersonalAdquisicionDato> tablaPersonalAdquisicion;
+        private static Tabla<String, PersonalSalaDato> tablaPersonalSala;
 
         
-
-
-        public static Tabla<String, UsuarioDato> TablaUsuarios {  
+       public static Tabla<String, UsuarioDato> TablaUsuarios {  
             get {
                 if (tablaUsuarios == null)
                 {
@@ -81,25 +79,25 @@ namespace Persistencia
             }
         }
 
-        public static Tabla<String, PersonalAdquisicionesDatos> TablaPersonalAdquisicion
+        public static Tabla<String, PersonalAdquisicionDato> TablaPersonalAdquisicion
         {
             get
             {
                 if (tablaPersonalAdquisicion == null)
                 {
-                    BD.tablaPersonalAdquisicion = new Tabla<string, PersonalAdquisicionesDatos>();
+                    BD.tablaPersonalAdquisicion = new Tabla<string, PersonalAdquisicionDato>();
                 }
                 return tablaPersonalAdquisicion;
             }
         }
 
-        public static Tabla<String, PersonalSalaDatos> TablaPersonalSala
+        public static Tabla<String, PersonalSalaDato> TablaPersonalSala
         {
             get
             {
                 if (tablaPersonalSala == null)
                 {
-                    BD.tablaPersonalSala = new Tabla<string, PersonalSalaDatos>();
+                    BD.tablaPersonalSala = new Tabla<string, PersonalSalaDato>();
                 }
                 return tablaPersonalSala;
             }

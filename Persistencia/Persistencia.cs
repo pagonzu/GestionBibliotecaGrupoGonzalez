@@ -16,6 +16,12 @@ namespace Persistencia
             UsuarioDato u = Transformers.UsuarioAUsuarioDato(entity);
             BD.TablaUsuarios.Add(u);
         }
+        public static Usuario READ_USUARIO(string codigo)
+        {
+            Usuario usuario = null;
+            foreach (var us in BD.TablaUsuarios) if (us.Id == codigo) usuario = Transformers.UsuarioDatoAUsuario(us);
+            return usuario;
+        }
 
         public static List<Usuario> READ_ALL_USUARIOS()
         {
@@ -57,10 +63,10 @@ namespace Persistencia
             return lista;
         }
 
-        public static Ejemplar READ()
+        public static Ejemplar READ(string codigo)
         {
             Ejemplar ejemplar = null;
-            foreach (var d in BD.TablaEjemplares) if (d.Id == ejemplar.Codigo) ejemplar = Transformers.EjemplarDatoAEjemplar(d);
+            foreach (var d in BD.TablaEjemplares) if (d.Id == codigo) ejemplar = Transformers.EjemplarDatoAEjemplar(d);
             return ejemplar;
         }
 
@@ -170,13 +176,41 @@ namespace Persistencia
 
         public static void CREATE(PersonalAdquisiciones entity)
         {
-            PersonalAdquisicionesDatos p = Transformers.PersonalAdqAPersonalAdqDato(entity);
+            PersonalAdquisicionDato p = Transformers.PersonalAdqAPersonalAdqDato(entity);
             BD.TablaPersonalAdquisicion.Add(p);
+        }
+
+        public static PersonalSala READ_PERSONAL_SALA(string usuario)
+        {
+            PersonalSala personalSala = null;
+            foreach (var ps in BD.TablaPersonalSala) if (ps.Nombre == usuario) personalSala = Transformers.PersonalSalaDatoAPersonalSala(ps);
+            return personalSala;
+        }
+
+        public static PersonalAdquisiciones READ_PERSONAL_ADQUISICIONES(string usuario)
+        {
+            PersonalAdquisiciones personalAdquisiciones = null;
+            foreach (var ps in BD.TablaPersonalAdquisicion) if (ps.Nombre == usuario) personalAdquisiciones = Transformers.PersonalAdqDatoAPersonalAdq(ps);
+            return personalAdquisiciones;
+        }
+
+        public static Prestamo READ_PRESTAMO(string idPrestamo)
+        {
+            Prestamo prestamo = null;
+            foreach (var ps in BD.TablaPrestamos) if (ps.Id == idPrestamo) prestamo = Transformers.PrestamoDatoAPrestamo(ps);
+            return prestamo;
+        }
+
+        public static Ejemplar READ_EJEMPLAR(string idEjemplar)
+        {
+            Ejemplar ejemplar = null;
+            foreach (var ej in BD.TablaEjemplares) if (ej.Id == idEjemplar) ejemplar = Transformers.EjemplarDatoAEjemplar(ps);
+            return ejemplar;
         }
 
         //public static void CREATE(Ejemplar entity)
         //{
-      
+
         //    EjemplarDato a = null;
 
         //    BD.TablaEjemplares.Add(a);
@@ -184,7 +218,7 @@ namespace Persistencia
 
         //public static void CREATE(Usuario e)
         //{
-   
+
         //    UsuarioDato u = Transformers.UsuarioAUsuarioDato(e);
 
         //    BD.TablaUsuarios.Add(u);

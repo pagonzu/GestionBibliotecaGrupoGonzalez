@@ -4,30 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModeloDominio
+namespace Persistencia
 {
-    public abstract class Trabajador
+    internal class PersonalSalaDato : Entity<String>
     {
-        private String idTrabajador;
         private String nombre;
         private String password;
 
-        public Trabajador(String nombre, String password)
+        public PersonalSalaDato(String idTrabajador, String nombre, String password)
+            : base(idTrabajador)
         {
-            idTrabajador = "";
             this.nombre = nombre;
             this.password = password;
         }
 
-        public Trabajador(String idTrabajador, String nombre, String password)
-        {
-            this.idTrabajador = idTrabajador;
-            this.nombre = nombre;
-            this.password = password;
-        }
-
-        public String IdTrabajador
-        { get { return idTrabajador; } }
 
         public String Nombre
         {
@@ -36,7 +26,7 @@ namespace ModeloDominio
         }
 
         public String Password
-        { 
+        {
             get { return password; }
             set { password = value; }
         }

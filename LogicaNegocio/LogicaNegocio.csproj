@@ -41,14 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AudioLibroLogica.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="LibroLogica.cs" />
-    <Compile Include="PersonalAdquisicionesLogica.cs" />
-    <Compile Include="PersonalSalaLogica.cs" />
-    <Compile Include="PrestamoLogica.cs" />
+    <Compile Include="ILNAdquisiciones.cs" />
+    <Compile Include="ILNPersonal.cs" />
+    <Compile Include="ILNSala.cs" />
+    <Compile Include="LNAdquisicion.cs" />
+    <Compile Include="LNPersonal.cs" />
+    <Compile Include="LNSala.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsuarioLogica.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModeloDominio\ModeloDominio.csproj">

@@ -6,33 +6,25 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class PersonalSala: Trabajador, IEquatable<PersonalSala>
+    public class PersonalSala: Personal, IEquatable<PersonalSala>
     {
         private int idSala;
 
         public PersonalSala(String nombre, String password) : base(nombre, password)
-        {
-            this.idSala = 0;
-        }
+        {}
 
-        public PersonalSala(String idTrabajador, int idSala, String nombre, String password) : base(idTrabajador, nombre, password)
-        {
-            this.idSala = idSala;
-        }
-
-        public int IdSala
-        {
-            get { return idSala; }
-        }
+        public PersonalSala(String idTrabajador, String nombre, String password) : base(idTrabajador, nombre, password)
+        {}
 
         public bool Equals(PersonalSala other)
         {
-            return this.IdSala == other.IdSala;
+            if (other == null) return false;
+            return this.IdPersonal == other.IdPersonal;
         }
 
         public override string ToString()
         {
-            return "Personal Adquisición " + IdSala + " | Nombre: " + Nombre;
+            return "Personal Sala " + IdPersonal + " | Nombre: " + Nombre;
         }
     }
 }

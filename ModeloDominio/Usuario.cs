@@ -45,6 +45,7 @@ namespace ModeloDominio
 
         public bool Equals(Usuario other)
         {
+            if (other == null) return false;
             return this.DNI.Equals(other.DNI);
         }
 
