@@ -103,7 +103,7 @@ namespace LogicaNegocio
 
         public Ejemplar GetEjemplarPorCodigo(string codigoEjemplar)
         {
-            return Persistencia.Persistencia.READ_EJEMPLAR(codigoEjemplar);
+            return Persistencia.Persistencia.READ(codigoEjemplar);
         }
 
         public List<Ejemplar> GetEjemplaresDeDocumento(string isbn)
