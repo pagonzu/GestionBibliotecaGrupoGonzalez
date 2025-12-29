@@ -16,6 +16,7 @@ namespace CapaPresentacion
         public Loguearse()
         {
             InitializeComponent();
+
         }
 
         private void entrar_Click(object sender, EventArgs e)

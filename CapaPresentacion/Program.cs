@@ -1,8 +1,10 @@
-﻿using System;
+﻿using LogicaNegocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace CapaPresentacion
 {
@@ -16,6 +18,8 @@ namespace CapaPresentacion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            LNAdquisicion.InicializarAdmin();
+            LNSala.InicializarAdmin();
             Application.Run(new Loguearse());
         }
     }
