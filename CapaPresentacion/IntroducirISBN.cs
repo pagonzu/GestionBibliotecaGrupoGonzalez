@@ -50,12 +50,67 @@ namespace CapaPresentacion
 
                 }
                 else {
-                    AltaDocumento alta = new AltaDocumento(sesion, txtISBN.Text); 
+                    AltaDocumento alta = new AltaDocumento(sesion, txtISBN.Text,"Alta"); 
                     alta.Show();
                 }
                 }
+            if (modo.Equals("Busqueda")) {
+                if (d == null)
+                {
+                    DialogResult respuesta = MessageBox.Show(
+                    "No existe un documento con ese ISBN. ¿Quieres introducir otro?",
+                    "Documento no existente",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
+                    if (respuesta == DialogResult.No)
+                    {
+                        this.Close(); // Se cierra y vuelve al principal 
+                    }
+                    else
+                    {
+                        txtISBN.Clear(); // Limpia el texto para introducir otro [cite: 114]
+                        txtISBN.Focus();
+
+                    }
+
+                }
+                else
+                {
+                    AltaDocumento alta = new AltaDocumento(sesion, txtISBN.Text,"Busqueda");
+                    alta.Show();
+                }
             }
+            if (modo.Equals("Baja"))
+            {
+                if (d == null)
+                {
+                    DialogResult respuesta = MessageBox.Show(
+                    "No existe un documento con ese ISBN. ¿Quieres introducir otro?",
+                    "Documento no existente",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                    if (respuesta == DialogResult.No)
+                    {
+                        this.Close(); // Se cierra y vuelve al principal 
+                    }
+                    else
+                    {
+                        txtISBN.Clear(); // Limpia el texto para introducir otro [cite: 114]
+                        txtISBN.Focus();
+
+                    }
+
+                }
+                else
+                {
+                    AltaDocumento alta = new AltaDocumento(sesion, txtISBN.Text, "Baja");
+                    alta.Show();
+                }
+            }
+
+        }
 
         private void Cancelar_Click(object sender, EventArgs e)
         {

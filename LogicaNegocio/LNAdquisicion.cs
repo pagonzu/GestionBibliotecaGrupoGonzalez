@@ -106,7 +106,7 @@ namespace LogicaNegocio
             if (ej != null)
             {
                 ej.Prestado = false;
-                Persistencia.Persistencia.UPDATE(ej);
+                Persistencia.Persistencia.DELETE(ej);
             }
         }
 

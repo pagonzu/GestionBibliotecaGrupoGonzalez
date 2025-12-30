@@ -57,8 +57,64 @@ namespace CapaPresentacion
                 }
                 else
                 {
-                    AltaEjemplar alta = new AltaEjemplar(sesion, txtCodigo.Text);
+                    AltaEjemplar alta = new AltaEjemplar(sesion, txtCodigo.Text,"Alta");
                     alta.Show();
+                }
+            }
+            if (modo.Equals("Baja"))
+            {
+                if (ej == null)
+                {
+                    DialogResult respuesta = MessageBox.Show(
+                    "No existe un ejemplar con ese codigo. ¿Quieres introducir otro?",
+                    "Ejemplar no existente",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                    if (respuesta == DialogResult.No)
+                    {
+                        this.Close(); // Se cierra y vuelve al principal 
+                    }
+                    else
+                    {
+                        txtCodigo.Clear(); // Limpia el texto para introducir otro [cite: 114]
+                        txtCodigo.Focus();
+
+                    }
+
+                }
+                else
+                {
+                    AltaEjemplar baja = new AltaEjemplar(sesion, txtCodigo.Text,"Baja");
+                    baja.Show();
+                }
+            }
+            if (modo.Equals("Busqueda"))
+            {
+                if (ej == null)
+                {
+                    DialogResult respuesta = MessageBox.Show(
+                    "No existe un ejemplar con ese codigo. ¿Quieres introducir otro?",
+                    "Ejemplar no existente",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                    if (respuesta == DialogResult.No)
+                    {
+                        this.Close(); // Se cierra y vuelve al principal 
+                    }
+                    else
+                    {
+                        txtCodigo.Clear(); // Limpia el texto para introducir otro [cite: 114]
+                        txtCodigo.Focus();
+
+                    }
+
+                }
+                else
+                {
+                    AltaEjemplar baja = new AltaEjemplar(sesion, txtCodigo.Text, "Busqueda");
+                    baja.Show();
                 }
             }
         }

@@ -52,64 +52,72 @@
             // ISBN
             // 
             this.ISBN.AutoSize = true;
-            this.ISBN.Location = new System.Drawing.Point(40, 32);
+            this.ISBN.Location = new System.Drawing.Point(53, 39);
+            this.ISBN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ISBN.Name = "ISBN";
-            this.ISBN.Size = new System.Drawing.Size(32, 13);
+            this.ISBN.Size = new System.Drawing.Size(38, 16);
             this.ISBN.TabIndex = 0;
             this.ISBN.Text = "ISBN";
             // 
             // txtISBN
             // 
-            this.txtISBN.Location = new System.Drawing.Point(141, 25);
+            this.txtISBN.Location = new System.Drawing.Point(188, 31);
+            this.txtISBN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(100, 20);
+            this.txtISBN.Size = new System.Drawing.Size(132, 22);
             this.txtISBN.TabIndex = 4;
             // 
             // txtTitulo
             // 
-            this.txtTitulo.Location = new System.Drawing.Point(141, 58);
+            this.txtTitulo.Location = new System.Drawing.Point(188, 71);
+            this.txtTitulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTitulo.Name = "txtTitulo";
-            this.txtTitulo.Size = new System.Drawing.Size(279, 20);
+            this.txtTitulo.Size = new System.Drawing.Size(371, 22);
             this.txtTitulo.TabIndex = 5;
             // 
             // txtAutor
             // 
-            this.txtAutor.Location = new System.Drawing.Point(141, 93);
+            this.txtAutor.Location = new System.Drawing.Point(188, 114);
+            this.txtAutor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAutor.Name = "txtAutor";
-            this.txtAutor.Size = new System.Drawing.Size(279, 20);
+            this.txtAutor.Size = new System.Drawing.Size(371, 22);
             this.txtAutor.TabIndex = 6;
             // 
             // txtEditorial
             // 
-            this.txtEditorial.Location = new System.Drawing.Point(141, 138);
+            this.txtEditorial.Location = new System.Drawing.Point(188, 170);
+            this.txtEditorial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEditorial.Name = "txtEditorial";
-            this.txtEditorial.Size = new System.Drawing.Size(279, 20);
+            this.txtEditorial.Size = new System.Drawing.Size(371, 22);
             this.txtEditorial.TabIndex = 7;
             // 
             // Titulo
             // 
             this.Titulo.AutoSize = true;
-            this.Titulo.Location = new System.Drawing.Point(40, 65);
+            this.Titulo.Location = new System.Drawing.Point(53, 80);
+            this.Titulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Titulo.Name = "Titulo";
-            this.Titulo.Size = new System.Drawing.Size(33, 13);
+            this.Titulo.Size = new System.Drawing.Size(40, 16);
             this.Titulo.TabIndex = 8;
             this.Titulo.Text = "Titulo";
             // 
             // Autor
             // 
             this.Autor.AutoSize = true;
-            this.Autor.Location = new System.Drawing.Point(40, 100);
+            this.Autor.Location = new System.Drawing.Point(53, 123);
+            this.Autor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Autor.Name = "Autor";
-            this.Autor.Size = new System.Drawing.Size(32, 13);
+            this.Autor.Size = new System.Drawing.Size(38, 16);
             this.Autor.TabIndex = 9;
             this.Autor.Text = "Autor";
             // 
             // Editorial
             // 
             this.Editorial.AutoSize = true;
-            this.Editorial.Location = new System.Drawing.Point(40, 138);
+            this.Editorial.Location = new System.Drawing.Point(53, 170);
+            this.Editorial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Editorial.Name = "Editorial";
-            this.Editorial.Size = new System.Drawing.Size(44, 13);
+            this.Editorial.Size = new System.Drawing.Size(56, 16);
             this.Editorial.TabIndex = 10;
             this.Editorial.Text = "Editorial";
             // 
@@ -117,9 +125,11 @@
             // 
             this.Tipo.Controls.Add(this.Audiolibro);
             this.Tipo.Controls.Add(this.Libro);
-            this.Tipo.Location = new System.Drawing.Point(43, 261);
+            this.Tipo.Location = new System.Drawing.Point(57, 321);
+            this.Tipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Tipo.Name = "Tipo";
-            this.Tipo.Size = new System.Drawing.Size(377, 100);
+            this.Tipo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tipo.Size = new System.Drawing.Size(503, 123);
             this.Tipo.TabIndex = 11;
             this.Tipo.TabStop = false;
             this.Tipo.Text = "Tipo de documento";
@@ -127,9 +137,10 @@
             // Audiolibro
             // 
             this.Audiolibro.AutoSize = true;
-            this.Audiolibro.Location = new System.Drawing.Point(31, 65);
+            this.Audiolibro.Location = new System.Drawing.Point(41, 80);
+            this.Audiolibro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Audiolibro.Name = "Audiolibro";
-            this.Audiolibro.Size = new System.Drawing.Size(71, 17);
+            this.Audiolibro.Size = new System.Drawing.Size(89, 20);
             this.Audiolibro.TabIndex = 16;
             this.Audiolibro.TabStop = true;
             this.Audiolibro.Text = "Audiolibro";
@@ -139,9 +150,10 @@
             // Libro
             // 
             this.Libro.AutoSize = true;
-            this.Libro.Location = new System.Drawing.Point(31, 33);
+            this.Libro.Location = new System.Drawing.Point(41, 41);
+            this.Libro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Libro.Name = "Libro";
-            this.Libro.Size = new System.Drawing.Size(48, 17);
+            this.Libro.Size = new System.Drawing.Size(58, 20);
             this.Libro.TabIndex = 15;
             this.Libro.TabStop = true;
             this.Libro.Text = "Libro";
@@ -149,9 +161,10 @@
             // 
             // Añadir
             // 
-            this.Añadir.Location = new System.Drawing.Point(43, 367);
+            this.Añadir.Location = new System.Drawing.Point(57, 452);
+            this.Añadir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Añadir.Name = "Añadir";
-            this.Añadir.Size = new System.Drawing.Size(156, 23);
+            this.Añadir.Size = new System.Drawing.Size(208, 28);
             this.Añadir.TabIndex = 12;
             this.Añadir.Text = "Añadir ejemplares";
             this.Añadir.UseVisualStyleBackColor = true;
@@ -159,9 +172,10 @@
             // 
             // Dar
             // 
-            this.Dar.Location = new System.Drawing.Point(237, 367);
+            this.Dar.Location = new System.Drawing.Point(316, 452);
+            this.Dar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Dar.Name = "Dar";
-            this.Dar.Size = new System.Drawing.Size(75, 23);
+            this.Dar.Size = new System.Drawing.Size(100, 28);
             this.Dar.TabIndex = 13;
             this.Dar.Text = "Dar alta";
             this.Dar.UseVisualStyleBackColor = true;
@@ -169,50 +183,56 @@
             // 
             // Cancelar
             // 
-            this.Cancelar.Location = new System.Drawing.Point(345, 367);
+            this.Cancelar.Location = new System.Drawing.Point(460, 452);
+            this.Cancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Cancelar.Name = "Cancelar";
-            this.Cancelar.Size = new System.Drawing.Size(75, 23);
+            this.Cancelar.Size = new System.Drawing.Size(100, 28);
             this.Cancelar.TabIndex = 14;
             this.Cancelar.Text = "Cancelar";
             this.Cancelar.UseVisualStyleBackColor = true;
+            this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
             // 
             // Duracion
             // 
             this.Duracion.AutoSize = true;
-            this.Duracion.Location = new System.Drawing.Point(40, 225);
+            this.Duracion.Location = new System.Drawing.Point(53, 277);
+            this.Duracion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Duracion.Name = "Duracion";
-            this.Duracion.Size = new System.Drawing.Size(50, 13);
+            this.Duracion.Size = new System.Drawing.Size(61, 16);
             this.Duracion.TabIndex = 15;
             this.Duracion.Text = "Duracion";
             // 
             // txtDuracion
             // 
-            this.txtDuracion.Location = new System.Drawing.Point(141, 222);
+            this.txtDuracion.Location = new System.Drawing.Point(188, 273);
+            this.txtDuracion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDuracion.Name = "txtDuracion";
-            this.txtDuracion.Size = new System.Drawing.Size(279, 20);
+            this.txtDuracion.Size = new System.Drawing.Size(371, 22);
             this.txtDuracion.TabIndex = 16;
             // 
             // AñoEdicion
             // 
             this.AñoEdicion.AutoSize = true;
-            this.AñoEdicion.Location = new System.Drawing.Point(40, 185);
+            this.AñoEdicion.Location = new System.Drawing.Point(53, 228);
+            this.AñoEdicion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AñoEdicion.Name = "AñoEdicion";
-            this.AñoEdicion.Size = new System.Drawing.Size(61, 13);
+            this.AñoEdicion.Size = new System.Drawing.Size(76, 16);
             this.AñoEdicion.TabIndex = 17;
             this.AñoEdicion.Text = "AñoEdicion";
             // 
             // txtAñoEdicion
             // 
-            this.txtAñoEdicion.Location = new System.Drawing.Point(141, 182);
+            this.txtAñoEdicion.Location = new System.Drawing.Point(188, 224);
+            this.txtAñoEdicion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAñoEdicion.Name = "txtAñoEdicion";
-            this.txtAñoEdicion.Size = new System.Drawing.Size(279, 20);
+            this.txtAñoEdicion.Size = new System.Drawing.Size(371, 22);
             this.txtAñoEdicion.TabIndex = 18;
             // 
             // AltaDocumento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 420);
+            this.ClientSize = new System.Drawing.Size(709, 517);
             this.Controls.Add(this.txtAñoEdicion);
             this.Controls.Add(this.AñoEdicion);
             this.Controls.Add(this.txtDuracion);
@@ -229,6 +249,7 @@
             this.Controls.Add(this.txtTitulo);
             this.Controls.Add(this.txtISBN);
             this.Controls.Add(this.ISBN);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AltaDocumento";
             this.Text = "AltaDocumento";
             this.Tipo.ResumeLayout(false);

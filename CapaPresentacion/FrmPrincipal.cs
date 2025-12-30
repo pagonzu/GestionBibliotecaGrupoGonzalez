@@ -86,5 +86,19 @@ namespace CapaPresentacion
             IntroducirCodigo FrmCdg = new IntroducirCodigo(logicaAdq, "Alta");
             FrmCdg.Show();
         }
+
+        private void bajaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            ILNAdquisiciones logicaAdq = _logica as ILNAdquisiciones;
+            IntroducirCodigo FrmCdg = new IntroducirCodigo(logicaAdq, "Baja");
+            FrmCdg.Show();
+        }
+
+        private void busquedaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            ILNAdquisiciones logicaAdq = _logica as ILNAdquisiciones;
+            IntroducirCodigo FrmCdg = new IntroducirCodigo(logicaAdq, "Busqueda");
+            FrmCdg.Show();
+        }
     }
 }
