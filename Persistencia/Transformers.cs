@@ -79,14 +79,14 @@ namespace Persistencia
                 }
             }
 
-            return new Ejemplar(ed.Id, ed.Estado, ed.Prestado, trabajador, documento);
+            return new Ejemplar(ed.Id, ed.Prestado, trabajador, documento);
         }
 
         public static EjemplarDato EjemplarAEjemplarDato(Ejemplar e)
         {
             if (e == null) return null;
 
-            return new EjemplarDato(e.Codigo, e.Estado, e.Prestado, e.Trabajador.IdPersonal, e.Documento.ISBN);
+            return new EjemplarDato(e.Codigo, e.Prestado, e.Trabajador.IdPersonal, e.Documento.ISBN);
         }
 
         public static Prestamo PrestamoDatoAPrestamo(PrestamoDato pd)

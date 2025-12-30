@@ -14,18 +14,14 @@ namespace Persistencia
         private String idTrabajador;
         private String isbn;
 
-        public EjemplarDato(String codigo, bool estado, bool prestado, String id_t, String ISBN): base(codigo)
+        public EjemplarDato(String codigo, bool prestado, String id_t, String ISBN): base(codigo)
         {
-            this.estado = estado;
+            
             this.prestado = prestado;
             this.idTrabajador = id_t;
             this.isbn = ISBN;
         }
-        public bool Estado
-        {
-            get { return estado; }
-            set { estado = value; }
-        }
+        
 
         public bool Prestado
         {

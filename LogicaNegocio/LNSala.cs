@@ -76,7 +76,7 @@ namespace LogicaNegocio
         public List<Ejemplar> GetEjemplaresNoDevueltos(string idPrestamo)
         {
             var p = GetPrestamoPorId(idPrestamo);
-            return p?.Ejemplares.Where(e => e.Estado).ToList() ?? new List<Ejemplar>();
+            return p?.Ejemplares.Where(e => e.Prestado).ToList() ?? new List<Ejemplar>();
         }
 
         public List<Prestamo> GetPrestamosPorDocumento(string isbn)
@@ -94,10 +94,10 @@ namespace LogicaNegocio
             var ej = p.Ejemplares.FirstOrDefault(e => e.Codigo == codigoEjemplar);
             if (ej != null)
             {
-                ej.Estado = false;
+                ej.Prestado = false;
             }
 
-            if (p.Ejemplares.All(e => !e.Estado))
+            if (p.Ejemplares.All(e => !e.Prestado))
                 p.Estado = true;
 
             Persistencia.Persistencia.UPDATE(p);
@@ -108,7 +108,7 @@ namespace LogicaNegocio
             var hoy = DateTime.Now;
             return Persistencia.Persistencia.READ_ALL_PRESTAMOS()
                 .Where(p => p.Estado)
-                .Where(p => p.Ejemplares.Any(e => e.Estado &&
+                .Where(p => p.Ejemplares.Any(e => e.Prestado &&
                     ((hoy - p.Fecha).TotalDays > (e.Documento is AudioLibro ? 10 : 15))))
                 .ToList();
         }

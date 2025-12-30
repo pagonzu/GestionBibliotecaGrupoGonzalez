@@ -53,7 +53,7 @@ namespace LogicaNegocio
             var ejemplares = new List<Ejemplar>();
             foreach (var prestamo in prestamos)
             {
-                ejemplares.AddRange(prestamo.Ejemplares.Where(e => e.Estado && e.Prestado));
+                ejemplares.AddRange(prestamo.Ejemplares.Where(e =>  e.Prestado));
             }
             return ejemplares;
         }
@@ -66,7 +66,7 @@ namespace LogicaNegocio
 
             foreach (var p in prestamos)
             {
-                foreach (var ej in p.Ejemplares.Where(e => e.Estado && e.Prestado))
+                foreach (var ej in p.Ejemplares.Where(e =>  e.Prestado))
                 {
                     int diasMaximo = ej.Documento is AudioLibro ? 10 : 15;
                     if ((hoy - p.Fecha).TotalDays > diasMaximo)

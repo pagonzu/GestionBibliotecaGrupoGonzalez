@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace LogicaNegocio
 {
-    public interface ILNAdquisiciones
+    public interface ILNAdquisiciones:ILNPersonal
     {
         // Libros
         void AltaLibro(Libro libro);
@@ -32,5 +32,7 @@ namespace LogicaNegocio
         bool ExisteEjemplarDisponible(string isbn);
         DateTime? GetFechaPrevisionDisponible(string isbn);
         List<Documento> GetTodosDocumentos();
+        Documento GetDocumentoPorIsbn(string isbn);
+
     }
 }

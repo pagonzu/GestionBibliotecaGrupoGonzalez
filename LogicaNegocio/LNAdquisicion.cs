@@ -9,7 +9,7 @@ namespace LogicaNegocio
 {
     public class LNAdquisicion : LNPersonal, ILNAdquisiciones
     {
-        
+
 
         public static void InicializarAdmin()
         {
@@ -32,7 +32,8 @@ namespace LogicaNegocio
             var instancia = new LNAdquisicion(personal);
             return instancia;
         }
-        private LNAdquisicion(PersonalAdquisiciones p) {
+        private LNAdquisicion(PersonalAdquisiciones p)
+        {
             PersonalLogueado = p;
         } // Privado: solo vía Login()
 
@@ -104,7 +105,7 @@ namespace LogicaNegocio
             Ejemplar ej = GetEjemplarPorCodigo(codigoEjemplar);
             if (ej != null)
             {
-                ej.Estado = false;
+                ej.Prestado = false;
                 Persistencia.Persistencia.UPDATE(ej);
             }
         }
@@ -129,7 +130,7 @@ namespace LogicaNegocio
         public bool ExisteEjemplarDisponible(string isbn)
         {
             return GetEjemplaresDeDocumento(isbn)
-                   .Any(e => !e.Estado && !e.Prestado);
+                   .Any(e => !e.Prestado && !e.Prestado);
         }
 
         public DateTime? GetFechaPrevisionDisponible(string isbn)
@@ -158,6 +159,20 @@ namespace LogicaNegocio
             docs.AddRange(GetTodosLibros());
             docs.AddRange(GetTodosAudioLibros());
             return docs.Cast<Documento>().ToList();
+        }
+        //Documentos
+        public Documento GetDocumentoPorIsbn(string isbn)
+        {
+            // Buscamos primero en libros
+            Documento doc = GetLibroPorIsbn(isbn);
+
+            // Si no es un libro, buscamos en audiolibros
+            if (doc == null)
+            {
+                doc = GetAudioLibroPorIsbn(isbn);
+            }
+
+            return doc;
         }
     }
 }

@@ -15,20 +15,16 @@ namespace ModeloDominio
         private bool prestado;
         private Personal trabajador;
         private Documento documento;
-        public Ejemplar(string codigo, bool estado, bool prestado, Personal trabajadorCompra, Documento documento)
+        public Ejemplar(string codigo, bool prestado, Personal trabajadorCompra, Documento documento)
         {
             this.codigo = codigo;
-            this.estado = estado;
+            
             this.prestado = prestado;
             this.trabajador = trabajadorCompra;
             this.documento = documento;
         }
 
-        public bool Estado
-        {
-            get { return estado; }
-            set { estado = value; }
-        }
+       
         public bool Prestado
         {
             get { return prestado; }

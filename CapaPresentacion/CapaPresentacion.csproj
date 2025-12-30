@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AltaDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaDocumento.Designer.cs">
+      <DependentUpon>AltaDocumento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AltaEjemplar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaEjemplar.Designer.cs">
+      <DependentUpon>AltaEjemplar.cs</DependentUpon>
+    </Compile>
     <Compile Include="DarAltaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,8 +82,26 @@
     <Compile Include="FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="IntroducirCodigo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IntroducirCodigo.Designer.cs">
+      <DependentUpon>IntroducirCodigo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IntroducirISBN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IntroducirISBN.Designer.cs">
+      <DependentUpon>IntroducirISBN.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AltaDocumento.resx">
+      <DependentUpon>AltaDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AltaEjemplar.resx">
+      <DependentUpon>AltaEjemplar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DarAltaUsuario.resx">
       <DependentUpon>DarAltaUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +113,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IntroducirCodigo.resx">
+      <DependentUpon>IntroducirCodigo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IntroducirISBN.resx">
+      <DependentUpon>IntroducirISBN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

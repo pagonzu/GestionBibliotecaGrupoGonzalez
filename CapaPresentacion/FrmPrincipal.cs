@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Collections.Specialized.BitVector32;
 
 namespace CapaPresentacion
 {
@@ -56,6 +57,34 @@ namespace CapaPresentacion
         {
             FrmIntroducirDNI FrmDni = new FrmIntroducirDNI(_logica, "Baja");
             FrmDni.Show();
+        }
+
+        private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ILNAdquisiciones logicaAdq = _logica as ILNAdquisiciones;
+            IntroducirISBN FrmDni = new IntroducirISBN(logicaAdq, "Alta");
+            FrmDni.Show();
+        }
+
+        private void bajaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ILNAdquisiciones logicaAdq = _logica as ILNAdquisiciones;
+            IntroducirISBN FrmDni = new IntroducirISBN(logicaAdq, "Baja");
+            FrmDni.Show();
+        }
+
+        private void busquedaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ILNAdquisiciones logicaAdq = _logica as ILNAdquisiciones;
+            IntroducirISBN FrmDni = new IntroducirISBN(logicaAdq, "Busqueda");
+            FrmDni.Show();
+        }
+
+        private void altaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            ILNAdquisiciones logicaAdq = _logica as ILNAdquisiciones;
+            IntroducirCodigo FrmCdg = new IntroducirCodigo(logicaAdq, "Alta");
+            FrmCdg.Show();
         }
     }
 }
