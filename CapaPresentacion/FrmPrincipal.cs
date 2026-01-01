@@ -16,10 +16,14 @@ namespace CapaPresentacion
     {
         // Guardamos la lógica que recibimos del Login
         private ILNPersonal _logica;
+        public FrmPrincipal() {
+            InitializeComponent();
+        }
         public FrmPrincipal(ILNPersonal sesion)
         {
             InitializeComponent();
             this._logica = sesion;
+            this.IsMdiContainer = true;
             this.Text = _logica.PersonalLogueado.Nombre + " - Gestión de biblioteca";
             ConfigurarPermisos();
         }
@@ -29,9 +33,12 @@ namespace CapaPresentacion
             // Si la lógica NO es de Adquisiciones, escondemos esos menús
             if (!(_logica is LNAdquisicion))
             {
-                documnetosToolStripMenuItem.Visible = false; 
+                documnetosToolStripMenuItem.Visible = false;
                 ejemplaresToolStripMenuItem.Visible = false;
 
+            }
+            else {
+                prestamoToolStripMenuItem.Visible = false;
             }
         }
 
@@ -42,63 +49,43 @@ namespace CapaPresentacion
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmIntroducirDNI FrmDni = new FrmIntroducirDNI(_logica,"Alta");
-            FrmDni.Show();
-            
+            FrmEntradaClave frm = new FrmEntradaClave(_logica, "Alta", "Usuario");
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void busquedaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmIntroducirDNI FrmDni = new FrmIntroducirDNI(_logica,"Busqueda");
-            FrmDni.Show();
+            FrmEntradaClave frm = new FrmEntradaClave(_logica, "Busqueda", "Usuario");
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void bajaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmIntroducirDNI FrmDni = new FrmIntroducirDNI(_logica, "Baja");
+            FrmEntradaClave frm = new FrmEntradaClave(_logica, "Baja", "Usuario");
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        
+
+        private void busquedaPorDNIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BusquedaPorDNI FrmDni = new BusquedaPorDNI(_logica);
             FrmDni.Show();
         }
 
-        private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void listadoDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ILNAdquisiciones logicaAdq = _logica as ILNAdquisiciones;
-            IntroducirISBN FrmDni = new IntroducirISBN(logicaAdq, "Alta");
+            ListadoUsuarios FrmDni = new ListadoUsuarios(_logica);
             FrmDni.Show();
         }
 
-        private void bajaToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void recorridoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ILNAdquisiciones logicaAdq = _logica as ILNAdquisiciones;
-            IntroducirISBN FrmDni = new IntroducirISBN(logicaAdq, "Baja");
-            FrmDni.Show();
-        }
-
-        private void busquedaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            ILNAdquisiciones logicaAdq = _logica as ILNAdquisiciones;
-            IntroducirISBN FrmDni = new IntroducirISBN(logicaAdq, "Busqueda");
-            FrmDni.Show();
-        }
-
-        private void altaToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            ILNAdquisiciones logicaAdq = _logica as ILNAdquisiciones;
-            IntroducirCodigo FrmCdg = new IntroducirCodigo(logicaAdq, "Alta");
-            FrmCdg.Show();
-        }
-
-        private void bajaToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            ILNAdquisiciones logicaAdq = _logica as ILNAdquisiciones;
-            IntroducirCodigo FrmCdg = new IntroducirCodigo(logicaAdq, "Baja");
-            FrmCdg.Show();
-        }
-
-        private void busquedaToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            ILNAdquisiciones logicaAdq = _logica as ILNAdquisiciones;
-            IntroducirCodigo FrmCdg = new IntroducirCodigo(logicaAdq, "Busqueda");
-            FrmCdg.Show();
+            UnoAUnoUsuarios u = new UnoAUnoUsuarios(_logica);
+            u.Show();
         }
     }
 }

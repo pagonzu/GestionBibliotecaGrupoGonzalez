@@ -26,13 +26,13 @@ namespace CapaPresentacion
             if (opSala.Checked) // Si eligió Personal de Sala
             {
                 // Llamamos al método estático de Login que ya tienes hecho
-                var sesionSala = LNSala.Login(usuario, pass);
+                ILNPersonal sesionSala = LNSala.Login(usuario, pass);
 
                 if (sesionSala != null)
                 {
                     // Si el login es correcto, abrimos la ventana principal
                     
-                    FrmPrincipal frm = new FrmPrincipal(sesionSala);
+                    FrmPrincipal frm = new FrmPSala(sesionSala);
                     frm.Show();
                     this.Hide(); // Escondemos el login
                 }
@@ -43,11 +43,11 @@ namespace CapaPresentacion
             }
             else if (opAd.Checked) // Si eligió Personal de Adquisiciones
             {
-                var sesionAdq = LNAdquisicion.Login(usuario, pass);
+                ILNPersonal sesionAdq = LNAdquisicion.Login(usuario, pass);
 
                 if (sesionAdq != null)
                 {
-                    FrmPrincipal frm = new FrmPrincipal(sesionAdq);
+                    FrmPrincipal frm = new FrmPAdq(sesionAdq);
                     frm.Show();
                     this.Hide();
                 }
