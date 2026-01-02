@@ -58,11 +58,23 @@
     <Compile Include="AltaEjemplar.Designer.cs">
       <DependentUpon>AltaEjemplar.cs</DependentUpon>
     </Compile>
+    <Compile Include="AltaPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaPrestamo.Designer.cs">
+      <DependentUpon>AltaPrestamo.cs</DependentUpon>
+    </Compile>
     <Compile Include="BusquedaPorDNI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BusquedaPorDNI.Designer.cs">
       <DependentUpon>BusquedaPorDNI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusquedaPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusquedaPrestamo.Designer.cs">
+      <DependentUpon>BusquedaPrestamo.cs</DependentUpon>
     </Compile>
     <Compile Include="DarAltaUsuario.cs">
       <SubType>Form</SubType>
@@ -106,6 +118,12 @@
     <Compile Include="ListadoDocumentos.Designer.cs">
       <DependentUpon>ListadoDocumentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListadoPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoPrestamos.Designer.cs">
+      <DependentUpon>ListadoPrestamos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListadoUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,8 +144,14 @@
     <EmbeddedResource Include="AltaEjemplar.resx">
       <DependentUpon>AltaEjemplar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AltaPrestamo.resx">
+      <DependentUpon>AltaPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BusquedaPorDNI.resx">
       <DependentUpon>BusquedaPorDNI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusquedaPrestamo.resx">
+      <DependentUpon>BusquedaPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DarAltaUsuario.resx">
       <DependentUpon>DarAltaUsuario.cs</DependentUpon>
@@ -149,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoDocumentos.resx">
       <DependentUpon>ListadoDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoPrestamos.resx">
+      <DependentUpon>ListadoPrestamos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoUsuarios.resx">
       <DependentUpon>ListadoUsuarios.cs</DependentUpon>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LogicaNegocio
 {
-    public interface ILNSala
+    public interface ILNSala : ILNPersonal
     {
         // Gestión de préstamos
         void AltaPrestamo(Prestamo p);
@@ -19,5 +19,6 @@ namespace LogicaNegocio
         List<Prestamo> GetPrestamosPorDocumento(string isbn);
         void DevolverEjemplar(string idPrestamo, string codigoEjemplar, DateTime fechaDevolucion);
         List<Prestamo> GetPrestamosFueraDePlazoEnProceso();
+        Ejemplar GetEjemplarPorCodigo(string codigo);
     }
 }

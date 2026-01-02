@@ -112,5 +112,9 @@ namespace LogicaNegocio
                     ((hoy - p.Fecha).TotalDays > (e.Documento is AudioLibro ? 10 : 15))))
                 .ToList();
         }
+        public Ejemplar GetEjemplarPorCodigo(string codigo)
+        {
+            return Persistencia.Persistencia.READ(codigo);
+        }
     }
 }
