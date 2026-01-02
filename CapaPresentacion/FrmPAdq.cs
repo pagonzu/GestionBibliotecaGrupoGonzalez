@@ -13,7 +13,7 @@ namespace CapaPresentacion
 {
     public partial class FrmPAdq : FrmPrincipal
     {
-        private LNAdquisicion sesion;
+        private ILNAdquisiciones sesion;
         public FrmPAdq():base()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace CapaPresentacion
         public FrmPAdq(ILNPersonal n) : base(n)
         {
             InitializeComponent();
-            sesion = (LNAdquisicion)n;
+            sesion =n as ILNAdquisiciones;
             
             this.altaToolStripMenuItem1.Click += new EventHandler(altaToolStripMenuItem1_Click);
             this.bajaToolStripMenuItem1.Click += new EventHandler(bajaToolStripMenuItem1_Click);
