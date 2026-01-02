@@ -15,7 +15,7 @@ namespace CapaPresentacion
     {
         
         private BindingSource miDirector = new BindingSource();
-        public ListadoDocumentos(LNAdquisicion sesion)
+        public ListadoDocumentos(ILNAdquisiciones sesion)
         {
             InitializeComponent();
             

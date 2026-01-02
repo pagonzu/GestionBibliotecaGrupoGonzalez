@@ -127,6 +127,11 @@ namespace LogicaNegocio
                    .ToList();
         }
 
+        public List<Ejemplar> GetTodosEjemplares()
+        {
+            return Persistencia.Persistencia.READ_ALL_EJEMPLARES();
+        }
+
         public bool ExisteEjemplarDisponible(string isbn)
         {
             return GetEjemplaresDeDocumento(isbn)

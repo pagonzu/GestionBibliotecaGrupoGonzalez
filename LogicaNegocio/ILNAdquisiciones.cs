@@ -27,6 +27,7 @@ namespace LogicaNegocio
         void ActualizarEjemplar(Ejemplar ejemplar);
         Ejemplar GetEjemplarPorCodigo(string codigoEjemplar);
         List<Ejemplar> GetEjemplaresDeDocumento(string isbn);
+        List<Ejemplar> GetTodosEjemplares();
 
         // Consultas avanzadas
         bool ExisteEjemplarDisponible(string isbn);

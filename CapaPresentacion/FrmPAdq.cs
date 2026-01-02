@@ -26,12 +26,17 @@ namespace CapaPresentacion
             this.altaToolStripMenuItem1.Click += new EventHandler(altaToolStripMenuItem1_Click);
             this.bajaToolStripMenuItem1.Click += new EventHandler(bajaToolStripMenuItem1_Click);
             this.busquedaToolStripMenuItem1.Click += new EventHandler(busquedaToolStripMenuItem1_Click);
+            this.listadoToolStripMenuItem2.Click += new EventHandler(listadoToolStripMenuItem2_Click);
+            
 
             this.altaToolStripMenuItem2.Click += new EventHandler(altaToolStripMenuItem2_Click);
             this.bajaToolStripMenuItem2.Click += new EventHandler(bajaToolStripMenuItem2_Click);
             this.busquedaToolStripMenuItem2.Click += new EventHandler(busquedaToolStripMenuItem2_Click);
             this.listadoToolStripMenuItem.Click += new EventHandler(listadoToolStripMenuItem_Click);
+            this.recorridoToolStripMenuItem1.Click += new EventHandler(recorridoToolStripMenuItem1_Click);
         }
+
+
         private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmEntradaClave frm = new FrmEntradaClave(sesion, "Alta", "Documento");
@@ -53,7 +58,14 @@ namespace CapaPresentacion
             frm.Show();
         }
 
-        
+        private void listadoToolStripMenuItem2_Click(Object sender, EventArgs e)
+        {
+            ListadoEjemplares Fle = new ListadoEjemplares(sesion);
+            Fle.MdiParent = this;
+            Fle.Show();
+        }
+
+
         private void altaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             FrmEntradaClave Frm = new FrmEntradaClave(sesion, "Alta", "Ejemplar");
@@ -77,11 +89,16 @@ namespace CapaPresentacion
 
         private void listadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ListadoDocumentos Frm = new ListadoDocumentos(sesion);
-            Frm.MdiParent = this;
-            Frm.Show();
+            ListadoDocumentos Fld = new ListadoDocumentos(sesion);
+            Fld.MdiParent = this;
+            Fld.Show();
         }
-
+        private void recorridoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            UnoAUnoDocumentos Frd = new UnoAUnoDocumentos(sesion);
+            Frd.MdiParent = this;
+            Frd.Show();
+        }
 
     }
 }
