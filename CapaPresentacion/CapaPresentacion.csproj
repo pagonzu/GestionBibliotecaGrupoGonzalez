@@ -100,6 +100,12 @@
     <Compile Include="FrmPSala.Designer.cs">
       <DependentUpon>FrmPSala.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListadoDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoDocumentos.Designer.cs">
+      <DependentUpon>ListadoDocumentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListadoUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPSala.resx">
       <DependentUpon>FrmPSala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoDocumentos.resx">
+      <DependentUpon>ListadoDocumentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoUsuarios.resx">
       <DependentUpon>ListadoUsuarios.cs</DependentUpon>

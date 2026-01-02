@@ -87,5 +87,7 @@ namespace CapaPresentacion
             UnoAUnoUsuarios u = new UnoAUnoUsuarios(_logica);
             u.Show();
         }
+
+        
     }
 }

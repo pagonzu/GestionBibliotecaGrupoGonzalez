@@ -71,8 +71,8 @@ namespace CapaPresentacion
 
         private void Añadir_Click(object sender, EventArgs e)
         {
-            IntroducirCodigo i = new IntroducirCodigo(sesion, "Alta");
-            i.Show();
+            FrmEntradaClave i = new FrmEntradaClave(sesion, "Alta","Documento");
+            i.ShowDialog();
         }
 
         private void Dar_Click(object sender, EventArgs e)

@@ -30,6 +30,7 @@ namespace CapaPresentacion
             this.altaToolStripMenuItem2.Click += new EventHandler(altaToolStripMenuItem2_Click);
             this.bajaToolStripMenuItem2.Click += new EventHandler(bajaToolStripMenuItem2_Click);
             this.busquedaToolStripMenuItem2.Click += new EventHandler(busquedaToolStripMenuItem2_Click);
+            this.listadoToolStripMenuItem.Click += new EventHandler(listadoToolStripMenuItem_Click);
         }
         private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -74,6 +75,13 @@ namespace CapaPresentacion
             Frm.Show();
         }
 
-        
+        private void listadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListadoDocumentos Frm = new ListadoDocumentos(sesion);
+            Frm.MdiParent = this;
+            Frm.Show();
+        }
+
+
     }
 }
