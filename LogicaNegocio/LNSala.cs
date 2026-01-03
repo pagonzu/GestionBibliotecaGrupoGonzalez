@@ -8,63 +8,63 @@ namespace LogicaNegocio
 {
     public class LNSala : LNPersonal, ILNSala
     {
-
-        public static void InicializarAdmin()
+        // 1. CONSTRUCTOR: Recibe el personal y la persistencia
+        // Usamos :base(persistencia) para enviarla a LNPersonal
+        public LNSala(PersonalSala p, IPersistencia persistencia) : base(persistencia)
         {
-            // 1. Creamos el objeto de Dominio (inteligente)
-            // Usamos los datos que quieras para tu prueba
-            PersonalSala admin = new PersonalSala("yazid", "2005");
-
-            // 2. Llamamos a la Persistencia
-            // Esto lo transforma a 'Dato' y lo mete en la 'Tabla' automáticamente
-            Persistencia.Persistencia.CREATE(admin);
+            this.personalLogueado = p;
         }
 
-
-        // Login ESTÁTICO: valida TablaPersonalSala y devuelve instancia
-        public static LNSala Login(string usuario, string contraseña)
+        // 2. INICIALIZAR ADMIN: Ahora requiere recibir la persistencia
+        public static void InicializarAdmin(IPersistencia persistencia)
         {
-            PersonalSala personal = Persistencia.Persistencia.READ_PERSONAL_SALA(usuario);
+            PersonalSala admin = new PersonalSala("yazid", "2005");
+            // Usamos la instancia recibida, no la clase estática
+            persistencia.CREATE(admin);
+        }
+
+        // 3. LOGIN: Recibe la persistencia desde la Capa de Presentación
+        public static LNSala Login(string usuario, string contraseña, IPersistencia persistencia)
+        {
+            // Usamos la instancia de persistencia inyectada para buscar al usuario
+            PersonalSala personal = persistencia.READ_PERSONAL_SALA(usuario);
+
             if (personal == null) return null;
             if (personal.Password != contraseña) return null;
 
-            var instancia = new LNSala(personal);
-            return instancia;
+            // Creamos la instancia de la lógica pasando la persistencia
+            return new LNSala(personal, persistencia);
         }
 
-        private LNSala(PersonalSala p) { 
-            base.PersonalLogueado = p;
-        }
+        // --- MÉTODOS DE PRÉSTAMOS ---
+        // Todos usan "_datos", que es la interfaz heredada de LNPersonal
 
-        private LNSala() { } // Privado: solo vía Login()
-
-        // Préstamos
         public void AltaPrestamo(Prestamo p)
         {
             p.Trabajador = PersonalLogueado as PersonalSala;
-            Persistencia.Persistencia.CREATE(p);
+            _datos.CREATE(p);
         }
 
         public void ActualizarPrestamo(Prestamo p)
         {
-            Persistencia.Persistencia.UPDATE(p);
+            _datos.UPDATE(p);
         }
 
         public void BajaPrestamo(string idPrestamo)
         {
             var prestamo = GetPrestamoPorId(idPrestamo);
             if (prestamo != null)
-                Persistencia.Persistencia.DELETE(prestamo);
+                _datos.DELETE(prestamo);
         }
 
         public Prestamo GetPrestamoPorId(string idPrestamo)
         {
-            return Persistencia.Persistencia.READ_PRESTAMO(idPrestamo);
+            return _datos.READ_PRESTAMO(idPrestamo);
         }
 
         public List<Prestamo> GetTodosPrestamos()
         {
-            return Persistencia.Persistencia.READ_ALL_PRESTAMOS();
+            return _datos.READ_ALL_PRESTAMOS();
         }
 
         public string GetEstadoPrestamo(string idPrestamo)
@@ -81,7 +81,7 @@ namespace LogicaNegocio
 
         public List<Prestamo> GetPrestamosPorDocumento(string isbn)
         {
-            return Persistencia.Persistencia.READ_ALL_PRESTAMOS()
+            return _datos.READ_ALL_PRESTAMOS()
                    .Where(p => p.Ejemplares.Any(e => e.Documento.ISBN == isbn))
                    .ToList();
         }
@@ -100,21 +100,22 @@ namespace LogicaNegocio
             if (p.Ejemplares.All(e => !e.Prestado))
                 p.Estado = true;
 
-            Persistencia.Persistencia.UPDATE(p);
+            _datos.UPDATE(p);
         }
 
         public List<Prestamo> GetPrestamosFueraDePlazoEnProceso()
         {
             var hoy = DateTime.Now;
-            return Persistencia.Persistencia.READ_ALL_PRESTAMOS()
+            return _datos.READ_ALL_PRESTAMOS()
                 .Where(p => p.Estado)
                 .Where(p => p.Ejemplares.Any(e => e.Prestado &&
                     ((hoy - p.Fecha).TotalDays > (e.Documento is AudioLibro ? 10 : 15))))
                 .ToList();
         }
+
         public Ejemplar GetEjemplarPorCodigo(string codigo)
         {
-            return Persistencia.Persistencia.READ(codigo);
+            return _datos.READ(codigo);
         }
     }
 }

@@ -9,95 +9,93 @@ namespace LogicaNegocio
 {
     public class LNAdquisicion : LNPersonal, ILNAdquisiciones
     {
-
-
-        public static void InicializarAdmin()
+        // 1. CONSTRUCTOR: Inyecta la persistencia y la envía al padre (LNPersonal)
+        public LNAdquisicion(PersonalAdquisiciones p, IPersistencia persistencia)
+            : base(persistencia)
         {
-            // 1. Creamos el objeto de Dominio (inteligente)
-            // Usamos los datos que quieras para tu prueba
+            this.personalLogueado = p;
+        }
+
+        // 2. INICIALIZAR ADMIN: Ahora requiere la instancia de persistencia
+        public static void InicializarAdmin(IPersistencia persistencia)
+        {
             PersonalAdquisiciones admin = new PersonalAdquisiciones("yazid", "2005");
-
-            // 2. Llamamos a la Persistencia
-            // Esto lo transforma a 'Dato' y lo mete en la 'Tabla' automáticamente
-            Persistencia.Persistencia.CREATE(admin);
+            persistencia.CREATE(admin);
         }
 
-        // Login ESTÁTICO: valida TablaPersonalAdquisicion y devuelve instancia
-        public static LNAdquisicion Login(string usuario, string contraseña)
+        // 3. LOGIN: Recibe la persistencia para poder buscar y crear la instancia
+        public static LNAdquisicion Login(string usuario, string contraseña, IPersistencia persistencia)
         {
-            PersonalAdquisiciones personal = Persistencia.Persistencia.READ_PERSONAL_ADQUISICIONES(usuario);
-            if (personal == null) return null;
-            if (personal.Password != contraseña) return null;
+            PersonalAdquisiciones personal = persistencia.READ_PERSONAL_ADQUISICIONES(usuario);
 
-            var instancia = new LNAdquisicion(personal);
-            return instancia;
+            if (personal == null || personal.Password != contraseña) return null;
+
+            return new LNAdquisicion(personal, persistencia);
         }
-        private LNAdquisicion(PersonalAdquisiciones p)
-        {
-            PersonalLogueado = p;
-        } // Privado: solo vía Login()
 
-        // Libros
+        // --- GESTIÓN DE LIBROS ---
         public void AltaLibro(Libro libro)
         {
-            Persistencia.Persistencia.CREATE(libro);
+            _datos.CREATE(libro);
         }
 
         public void BajaLibro(string isbn)
         {
             Libro libro = GetLibroPorIsbn(isbn);
-            if (libro != null) Persistencia.Persistencia.DELETE(libro);
+            if (libro != null) _datos.DELETE(libro);
         }
 
         public void ActualizarLibro(Libro libro)
         {
-            Persistencia.Persistencia.UPDATE(libro);
+            _datos.UPDATE(libro);
         }
 
         public Libro GetLibroPorIsbn(string isbn)
         {
-            return Persistencia.Persistencia.READ_ALL_LIBROS()
+            return _datos.READ_ALL_LIBROS()
                    .FirstOrDefault(l => l.ISBN == isbn);
         }
 
         public List<Libro> GetTodosLibros()
         {
-            return Persistencia.Persistencia.READ_ALL_LIBROS();
+            return _datos.READ_ALL_LIBROS();
         }
 
-        // Audiolibros
+        // --- GESTIÓN DE AUDIOLIBROS ---
         public void AltaAudioLibro(AudioLibro audioLibro)
         {
-            Persistencia.Persistencia.CREATE(audioLibro);
+            _datos.CREATE(audioLibro);
         }
 
         public void BajaAudioLibro(string isbn)
         {
             var audio = GetAudioLibroPorIsbn(isbn);
-            if (audio != null) Persistencia.Persistencia.DELETE(audio);
+            if (audio != null) _datos.DELETE(audio);
         }
 
         public void ActualizarAudioLibro(AudioLibro audioLibro)
         {
-            Persistencia.Persistencia.UPDATE(audioLibro);
+            _datos.UPDATE(audioLibro);
         }
 
         public AudioLibro GetAudioLibroPorIsbn(string isbn)
         {
-            return Persistencia.Persistencia.READ_ALL_AUDIOLIBROS()
+            return _datos.READ_ALL_AUDIOLIBROS()
                    .FirstOrDefault(a => a.ISBN == isbn);
         }
 
         public List<AudioLibro> GetTodosAudioLibros()
         {
-            return Persistencia.Persistencia.READ_ALL_AUDIOLIBROS();
+            return _datos.READ_ALL_AUDIOLIBROS();
         }
 
-        // Ejemplares
+        // --- GESTIÓN DE EJEMPLARES ---
         public void AltaEjemplar(Ejemplar ejemplar)
         {
+            // Asignamos el trabajador logueado antes de guardar
             ejemplar.Trabajador = PersonalLogueado;
-            Persistencia.Persistencia.CREATE(ejemplar);
+            // Usamos la persistencia inyectada [cite: 2025-12-30]
+            _datos.CREATE(ejemplar);
         }
 
         public void BajaEjemplar(string codigoEjemplar)
@@ -106,41 +104,41 @@ namespace LogicaNegocio
             if (ej != null)
             {
                 ej.Prestado = false;
-                Persistencia.Persistencia.DELETE(ej);
+                _datos.DELETE(ej);
             }
         }
 
         public void ActualizarEjemplar(Ejemplar ejemplar)
         {
-            Persistencia.Persistencia.UPDATE(ejemplar);
+            _datos.UPDATE(ejemplar);
         }
 
         public Ejemplar GetEjemplarPorCodigo(string codigoEjemplar)
         {
-            return Persistencia.Persistencia.READ(codigoEjemplar);
+            return _datos.READ(codigoEjemplar);
         }
 
         public List<Ejemplar> GetEjemplaresDeDocumento(string isbn)
         {
-            return Persistencia.Persistencia.READ_ALL_EJEMPLARES()
+            return _datos.READ_ALL_EJEMPLARES()
                    .Where(e => e.Documento.ISBN == isbn)
                    .ToList();
         }
 
         public List<Ejemplar> GetTodosEjemplares()
         {
-            return Persistencia.Persistencia.READ_ALL_EJEMPLARES();
+            return _datos.READ_ALL_EJEMPLARES();
         }
 
         public bool ExisteEjemplarDisponible(string isbn)
         {
             return GetEjemplaresDeDocumento(isbn)
-                   .Any(e => !e.Prestado && !e.Prestado);
+                   .Any(e => !e.Prestado);
         }
 
         public DateTime? GetFechaPrevisionDisponible(string isbn)
         {
-            var prestamos = Persistencia.Persistencia.READ_ALL_PRESTAMOS()
+            var prestamos = _datos.READ_ALL_PRESTAMOS()
                 .Where(p => p.Estado &&
                        p.Ejemplares.Any(e => e.Documento.ISBN == isbn && e.Prestado));
 
@@ -163,22 +161,17 @@ namespace LogicaNegocio
             var docs = new List<Documento>();
             docs.AddRange(GetTodosLibros());
             docs.AddRange(GetTodosAudioLibros());
-            return docs.Cast<Documento>().ToList();
+            return docs;
         }
-        //Documentos
+
         public Documento GetDocumentoPorIsbn(string isbn)
         {
-            // Buscamos primero en libros
             Documento doc = GetLibroPorIsbn(isbn);
-
-            // Si no es un libro, buscamos en audiolibros
             if (doc == null)
             {
                 doc = GetAudioLibroPorIsbn(isbn);
             }
-
             return doc;
         }
     }
 }
-

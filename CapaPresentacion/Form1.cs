@@ -8,33 +8,39 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicaNegocio;
+using Persistencia; // Necesario para reconocer IPersistencia
 
 namespace CapaPresentacion
 {
     public partial class Loguearse : Form
     {
-        public Loguearse()
+        // 1. Declaramos la variable para guardar la persistencia que viene de Program.cs
+        private readonly IPersistencia _persistencia;
+
+        // 2. Modificamos el constructor para recibir la persistencia (Inyección)
+        public Loguearse(IPersistencia persistenciaInyectada)
         {
             InitializeComponent();
-
+            // Guardamos la instancia para usarla en el botón entrar
+            this._persistencia = persistenciaInyectada;
         }
 
         private void entrar_Click(object sender, EventArgs e)
         {
             string usuario = nombreLog.Text;
             string pass = contraseñaLog.Text;
+
             if (opSala.Checked) // Si eligió Personal de Sala
             {
-                // Llamamos al método estático de Login que ya tienes hecho
-                ILNPersonal sesionSala = LNSala.Login(usuario, pass);
+                // 3. Pasamos la instancia de persistencia al método Login
+                ILNSala sesionSala = LNSala.Login(usuario, pass, _persistencia);
 
                 if (sesionSala != null)
                 {
-                    // Si el login es correcto, abrimos la ventana principal
-                    
+                    // Abrimos la ventana principal pasando la sesión
                     FrmPrincipal frm = new FrmPSala(sesionSala);
                     frm.Show();
-                    this.Hide(); // Escondemos el login
+                    this.Hide();
                 }
                 else
                 {
@@ -43,7 +49,8 @@ namespace CapaPresentacion
             }
             else if (opAd.Checked) // Si eligió Personal de Adquisiciones
             {
-                ILNPersonal sesionAdq = LNAdquisicion.Login(usuario, pass);
+                // 4. Pasamos la instancia de persistencia al método Login de Adquisiciones
+                ILNAdquisiciones sesionAdq = LNAdquisicion.Login(usuario, pass, _persistencia);
 
                 if (sesionAdq != null)
                 {
@@ -56,10 +63,6 @@ namespace CapaPresentacion
                     MessageBox.Show("Usuario o contraseña de Adquisiciones incorrectos.");
                 }
             }
-
-
-
-
         }
     }
 }

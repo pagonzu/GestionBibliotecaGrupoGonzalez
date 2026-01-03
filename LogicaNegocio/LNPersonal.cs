@@ -8,7 +8,16 @@ namespace LogicaNegocio
 {
     public abstract class LNPersonal : ILNPersonal
     {
+        // 1. Definimos el campo de la interfaz (sustituye el acoplamiento a la clase estática)
+        protected readonly IPersistencia _datos;
+
         protected Personal personalLogueado;
+
+        // 2. Constructor que recibe la persistencia (Inyección de Dependencias)
+        protected LNPersonal(IPersistencia persistencia)
+        {
+            this._datos = persistencia;
+        }
 
         public virtual Personal PersonalLogueado
         {
@@ -16,44 +25,46 @@ namespace LogicaNegocio
             set { personalLogueado = value; }
         }
 
-        // Gestión de usuarios
+        // Gestión de usuarios usando la instancia inyectada
         public virtual void AltaUsuario(Usuario u)
         {
-            Persistencia.Persistencia.CREATE(u);
+            // Ya no usamos Persistencia.Persistencia.CREATE
+            _datos.CREATE(u);
         }
 
         public virtual void BajaUsuario(string dni)
         {
             var usuario = GetUsuarioPorDni(dni);
             if (usuario != null)
-                Persistencia.Persistencia.DELETE(usuario);
+                _datos.DELETE(usuario); // Usamos la interfaz
         }
 
         public virtual void ActualizarUsuario(Usuario u)
         {
-            Persistencia.Persistencia.UPDATE(u);
+            _datos.UPDATE(u); // Usamos la interfaz
         }
 
         public virtual Usuario GetUsuarioPorDni(string dni)
         {
-            return Persistencia.Persistencia.READ_USUARIO(dni);
+            return _datos.READ_USUARIO(dni); // Usamos la interfaz
         }
 
         public virtual List<Usuario> GetTodosUsuarios()
         {
-            return Persistencia.Persistencia.READ_ALL_USUARIOS();
+            return _datos.READ_ALL_USUARIOS(); // Usamos la interfaz
         }
 
         // Consultas asociadas a usuarios
         public virtual List<Ejemplar> GetEjemplaresPrestadosUsuario(string dniUsuario)
         {
-            var prestamos = Persistencia.Persistencia.READ_ALL_PRESTAMOS()
+            // Usamos la interfaz para leer los préstamos
+            var prestamos = _datos.READ_ALL_PRESTAMOS()
                 .Where(p => p.Usuario.DNI == dniUsuario && p.Estado);
 
             var ejemplares = new List<Ejemplar>();
             foreach (var prestamo in prestamos)
             {
-                ejemplares.AddRange(prestamo.Ejemplares.Where(e =>  e.Prestado));
+                ejemplares.AddRange(prestamo.Ejemplares.Where(e => e.Prestado));
             }
             return ejemplares;
         }
@@ -61,12 +72,13 @@ namespace LogicaNegocio
         public virtual bool UsuarioConPrestamoFueraDePlazo(string dniUsuario)
         {
             var hoy = DateTime.Now;
-            var prestamos = Persistencia.Persistencia.READ_ALL_PRESTAMOS()
+            // Usamos la interfaz para obtener los datos
+            var prestamos = _datos.READ_ALL_PRESTAMOS()
                 .Where(p => p.Usuario.DNI == dniUsuario && p.Estado);
 
             foreach (var p in prestamos)
             {
-                foreach (var ej in p.Ejemplares.Where(e =>  e.Prestado))
+                foreach (var ej in p.Ejemplares.Where(e => e.Prestado))
                 {
                     int diasMaximo = ej.Documento is AudioLibro ? 10 : 15;
                     if ((hoy - p.Fecha).TotalDays > diasMaximo)
@@ -78,7 +90,8 @@ namespace LogicaNegocio
 
         public virtual List<Prestamo> GetPrestamosDeUsuario(string dniUsuario)
         {
-            return Persistencia.Persistencia.READ_ALL_PRESTAMOS()
+            // Usamos la interfaz para obtener los préstamos
+            return _datos.READ_ALL_PRESTAMOS()
                    .Where(p => p.Usuario.DNI == dniUsuario)
                    .ToList();
         }
