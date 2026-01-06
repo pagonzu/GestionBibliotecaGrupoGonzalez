@@ -46,12 +46,13 @@
             this.altaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.bajaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.busquedaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.prestamoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.busquedaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.configuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listadoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +67,7 @@
             this.configuracionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1067, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1067, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -134,37 +135,37 @@
             this.listadoToolStripMenuItem,
             this.recorridoToolStripMenuItem1});
             this.documnetosToolStripMenuItem.Name = "documnetosToolStripMenuItem";
-            this.documnetosToolStripMenuItem.Size = new System.Drawing.Size(107, 26);
+            this.documnetosToolStripMenuItem.Size = new System.Drawing.Size(107, 24);
             this.documnetosToolStripMenuItem.Text = "Documentos";
             // 
             // altaToolStripMenuItem1
             // 
             this.altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
-            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
             this.altaToolStripMenuItem1.Text = "Alta";
             // 
             // bajaToolStripMenuItem1
             // 
             this.bajaToolStripMenuItem1.Name = "bajaToolStripMenuItem1";
-            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
             this.bajaToolStripMenuItem1.Text = "Baja";
             // 
             // busquedaToolStripMenuItem1
             // 
             this.busquedaToolStripMenuItem1.Name = "busquedaToolStripMenuItem1";
-            this.busquedaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.busquedaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
             this.busquedaToolStripMenuItem1.Text = "Busqueda";
             // 
             // listadoToolStripMenuItem
             // 
             this.listadoToolStripMenuItem.Name = "listadoToolStripMenuItem";
-            this.listadoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.listadoToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
             this.listadoToolStripMenuItem.Text = "Listado";
             // 
             // recorridoToolStripMenuItem1
             // 
             this.recorridoToolStripMenuItem1.Name = "recorridoToolStripMenuItem1";
-            this.recorridoToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.recorridoToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
             this.recorridoToolStripMenuItem1.Text = "Recorrido";
             // 
             // ejemplaresToolStripMenuItem
@@ -175,7 +176,7 @@
             this.busquedaToolStripMenuItem2,
             this.listadoToolStripMenuItem2});
             this.ejemplaresToolStripMenuItem.Name = "ejemplaresToolStripMenuItem";
-            this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(96, 26);
+            this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
             this.ejemplaresToolStripMenuItem.Text = "Ejemplares";
             // 
             // altaToolStripMenuItem2
@@ -195,6 +196,12 @@
             this.busquedaToolStripMenuItem2.Name = "busquedaToolStripMenuItem2";
             this.busquedaToolStripMenuItem2.Size = new System.Drawing.Size(157, 26);
             this.busquedaToolStripMenuItem2.Text = "Busqueda";
+            // 
+            // listadoToolStripMenuItem2
+            // 
+            this.listadoToolStripMenuItem2.Name = "listadoToolStripMenuItem2";
+            this.listadoToolStripMenuItem2.Size = new System.Drawing.Size(157, 26);
+            this.listadoToolStripMenuItem2.Text = "Listado";
             // 
             // prestamoToolStripMenuItem
             // 
@@ -226,15 +233,18 @@
             // 
             // configuracionToolStripMenuItem
             // 
+            this.configuracionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cerrarSesiónToolStripMenuItem});
             this.configuracionToolStripMenuItem.Name = "configuracionToolStripMenuItem";
             this.configuracionToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
             this.configuracionToolStripMenuItem.Text = "Configuracion";
             // 
-            // listadoToolStripMenuItem2
+            // cerrarSesiónToolStripMenuItem
             // 
-            this.listadoToolStripMenuItem2.Name = "listadoToolStripMenuItem2";
-            this.listadoToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
-            this.listadoToolStripMenuItem2.Text = "Listado";
+            this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
+            this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -280,5 +290,6 @@
         protected System.Windows.Forms.ToolStripMenuItem busquedaToolStripMenuItem3;
         protected System.Windows.Forms.ToolStripMenuItem recorridoToolStripMenuItem1;
         protected System.Windows.Forms.ToolStripMenuItem listadoToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
     }
 }

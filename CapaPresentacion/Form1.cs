@@ -61,5 +61,10 @@ namespace CapaPresentacion
 
 
         }
+
+        private void buttonCargar_Click(object sender, EventArgs e)
+        {
+            LogicaNegocio.DatosPrueba.Cargar();
+        }
     }
 }

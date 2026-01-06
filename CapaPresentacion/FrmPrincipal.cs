@@ -87,5 +87,16 @@ namespace CapaPresentacion
             UnoAUnoUsuarios u = new UnoAUnoUsuarios(_logica);
             u.Show();
         }
+
+        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("¿Seguro que deseas cerrar sesión?","Cerrar Sesión",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (respuesta == DialogResult.Yes)
+            {
+                Loguearse login = new Loguearse();
+                login.Show();
+                this.Dispose();
+            }
+        }
     }
 }
