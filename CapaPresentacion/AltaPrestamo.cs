@@ -14,10 +14,10 @@ namespace CapaPresentacion
 {
     public partial class AltaPrestamo : Form
     {
-        private ILNSala sesion;
+        private LNSala sesion;
         private List<Ejemplar> cesta = new List<Ejemplar>();
 
-        public AltaPrestamo(ILNSala sesion)
+        public AltaPrestamo(LNSala sesion)
         {
             InitializeComponent();
             this.sesion = sesion;
