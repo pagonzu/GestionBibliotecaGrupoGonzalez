@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LogicaNegocio
 {
-    public interface ILNSala : ILNPersonal
+    public interface ILNSala
     {
         // Gestión de préstamos
         void AltaPrestamo(Prestamo p);
