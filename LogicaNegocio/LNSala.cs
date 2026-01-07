@@ -8,19 +8,6 @@ namespace LogicaNegocio
 {
     public class LNSala : LNPersonal, ILNSala
     {
-
-        public static void InicializarAdmin()
-        {
-            // 1. Creamos el objeto de Dominio (inteligente)
-            // Usamos los datos que quieras para tu prueba
-            PersonalSala admin = new PersonalSala("yazid", "2005");
-
-            // 2. Llamamos a la Persistencia
-            // Esto lo transforma a 'Dato' y lo mete en la 'Tabla' automáticamente
-            Persistencia.Persistencia.CREATE(admin);
-        }
-
-
         // Login ESTÁTICO: valida TablaPersonalSala y devuelve instancia
         public static LNSala Login(string usuario, string contraseña)
         {

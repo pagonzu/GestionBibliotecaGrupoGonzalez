@@ -18,8 +18,6 @@ namespace CapaPresentacion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            LNAdquisicion.InicializarAdmin();
-            LNSala.InicializarAdmin();
             Application.Run(new Loguearse());
         }
     }

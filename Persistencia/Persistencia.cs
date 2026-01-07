@@ -271,22 +271,5 @@ namespace Persistencia
             var dato = BD.TablaPersonalAdquisicion.FirstOrDefault(x => x.Id == entity.IdPersonal);
             if (dato != null) BD.TablaPersonalAdquisicion.Remove(dato);
         }
-
-
-        //public static void CREATE(Ejemplar entity)
-        //{
-
-        //    EjemplarDato a = null;
-
-        //    BD.TablaEjemplares.Add(a);
-        //}
-
-        //public static void CREATE(Usuario e)
-        //{
-
-        //    UsuarioDato u = Transformers.UsuarioAUsuarioDato(e);
-
-        //    BD.TablaUsuarios.Add(u);
-        //}
     }
 }

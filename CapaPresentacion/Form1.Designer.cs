@@ -111,11 +111,12 @@
             this.contraseñaLog.Name = "contraseñaLog";
             this.contraseñaLog.Size = new System.Drawing.Size(100, 22);
             this.contraseñaLog.TabIndex = 4;
+            this.contraseñaLog.UseSystemPasswordChar = true;
             // 
             // entrar
             // 
             this.entrar.Location = new System.Drawing.Point(49, 343);
-            this.entrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.entrar.Margin = new System.Windows.Forms.Padding(4);
             this.entrar.Name = "entrar";
             this.entrar.Size = new System.Drawing.Size(100, 28);
             this.entrar.TabIndex = 7;

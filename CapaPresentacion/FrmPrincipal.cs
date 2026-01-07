@@ -93,7 +93,7 @@ namespace CapaPresentacion
             DialogResult respuesta = MessageBox.Show("¿Seguro que deseas cerrar sesión?","Cerrar Sesión",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (respuesta == DialogResult.Yes)
             {
-                Loguearse login = new Loguearse();
+                Loguearse login = new Loguearse(true);
                 login.Show();
                 this.Dispose();
             }

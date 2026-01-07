@@ -16,7 +16,15 @@ namespace CapaPresentacion
         public Loguearse()
         {
             InitializeComponent();
+        }
 
+        public Loguearse(bool datosCargados)
+        {
+            InitializeComponent();
+            if (datosCargados)
+            {
+                this.buttonCargar.Enabled = false;
+            }
         }
 
         private void entrar_Click(object sender, EventArgs e)
@@ -65,6 +73,8 @@ namespace CapaPresentacion
         private void buttonCargar_Click(object sender, EventArgs e)
         {
             LogicaNegocio.DatosPrueba.Cargar();
+            MessageBox.Show("Datos cargados correctamente");
+            this.buttonCargar.Enabled = false;
         }
     }
 }

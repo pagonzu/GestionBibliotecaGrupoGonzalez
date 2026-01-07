@@ -9,19 +9,6 @@ namespace LogicaNegocio
 {
     public class LNAdquisicion : LNPersonal, ILNAdquisiciones
     {
-
-
-        public static void InicializarAdmin()
-        {
-            // 1. Creamos el objeto de Dominio (inteligente)
-            // Usamos los datos que quieras para tu prueba
-            PersonalAdquisiciones admin = new PersonalAdquisiciones("yazid", "2005");
-
-            // 2. Llamamos a la Persistencia
-            // Esto lo transforma a 'Dato' y lo mete en la 'Tabla' automáticamente
-            Persistencia.Persistencia.CREATE(admin);
-        }
-
         // Login ESTÁTICO: valida TablaPersonalAdquisicion y devuelve instancia
         public static LNAdquisicion Login(string usuario, string contraseña)
         {
